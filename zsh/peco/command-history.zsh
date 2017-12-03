@@ -4,5 +4,4 @@ function peco-command-history() {
     zle -R -c 
 }
 zle -N peco-command-history
-bindkey '^R' peco-select-history
-
+bindkey '^R' peco-command-history
