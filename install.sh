@@ -26,3 +26,8 @@ if [ ! -h $HOME/.vimrc ]; then
     ln -sn $HOME/git/dotfiles/.vimrc $HOME/.vimrc
 fi
 
+# tig
+if [ ! -h $HOME/.tigrc ]; then
+    ln -sn $HOME/git/dotfiles/.tigrc $HOME/.tigrc
+fi
+
