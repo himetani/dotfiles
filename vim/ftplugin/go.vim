@@ -1,6 +1,6 @@
 set noexpandtab
 
-nmap <leader>r <Plug>(go-run)
+nmap <leader>r <Plug>(go-rename)
 nmap <leader>b <Plug>(go-build)
 nmap <leader>t <Plug>(go-test)
 nmap <leader>c <Plug>(go-coverage)
