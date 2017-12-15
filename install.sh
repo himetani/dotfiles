@@ -22,6 +22,14 @@ if [ ! -h $HOME/.vim/pluginconfig ]; then
     ln -sn $HOME/git/dotfiles/vim/pluginconfig $HOME/.vim/pluginconfig
 fi
 
+if [ ! -h $HOME/.vim/dein.toml ]; then
+    ln -sn $HOME/git/dotfiles/vim/dein.toml $HOME/.vim/dein.toml
+fi
+
+if [ ! -h $HOME/.vim/dein_lazy.toml ]; then
+    ln -sn $HOME/git/dotfiles/vim/dein_lazy.toml $HOME/.vim/dein_lazy.toml
+fi
+
 if [ ! -h $HOME/.vimrc ]; then
     ln -sn $HOME/git/dotfiles/.vimrc $HOME/.vimrc
 fi

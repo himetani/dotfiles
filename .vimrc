@@ -1,39 +1,38 @@
-if !1 | finish | endif
+let s:dein_dir=expand('~/.vim/bundles')
+let s:dein_repo_dir=s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 
-if has('vim_starting')
-    if &compatible
-        set nocompatible
-    endif
-
-    " Required:
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
 
-call neobundle#begin(expand('~/.vim/bundle/'))
+if !isdirectory(s:dein_repo_dir)
+  execute '!git clone git@github.com:Shougo/dein.vim.git' s:dein_repo_dir
+endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'pangloss/vim-javascript'
-NeoBundle 'Shougo/neocomplete'
-NeoBundle 'derekwyatt/vim-scala'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'heavenshell/vim-jsdoc'
-NeoBundle 'wlangstroth/vim-racket'
-NeoBundle 'fatih/vim-go'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'davidhalter/jedi-vim'
-NeoBundle 'tfnico/vim-gradle'
-NeoBundle 'vim-scripts/groovy.vim'
-NeoBundle 'martinda/Jenkinsfile-vim-syntax'
+" Required:
+execute 'set runtimepath^=' . s:dein_repo_dir
 
-call neobundle#end()
-let mapleader = "\<Space>"
+" Required:
+if dein#load_state(s:dein_dir)
+  call dein#begin(s:dein_dir)
+
+  let s:toml_dir = expand('~/.vim/')
+  call dein#load_toml(s:toml_dir . '/dein.toml', {'lazy': 0})
+  call dein#load_toml(s:toml_dir . '/dein_lazy.toml', {'lazy': 1})
+
+    " Required:
+  call dein#end()
+  call dein#save_state()
+endif
+
+" Required:
+filetype plugin indent on
+syntax enable
 
 runtime! config/*.vim
 runtime! pluginconfig/*.vim
 
-" when filetype change, read plugin and indent config
-filetype plugin indent on
+" If you want to install not installed plugins on startup.
+if dein#check_install()
+  call dein#install()
+endif
