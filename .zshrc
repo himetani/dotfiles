@@ -61,3 +61,5 @@ export PKG_CONFIG_PATH=$HOME/.pkgconfig
 if [ -n $TMUX ]; then
    alias vim="TERM=screen-256color vim"
 fi
+
+export GIT_EDITOR=vim
