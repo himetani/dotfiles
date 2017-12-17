@@ -30,3 +30,10 @@ set noincsearch "検索文字列入力時に順次対象文字列にヒットさ
 set nohlsearch "検索結果文字列の非ハイライト表示
 
 set clipboard=unnamed
+
+set showmatch
+inoremap { {}<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap " ""<left>
+inoremap ' ''<left>
