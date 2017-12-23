@@ -32,8 +32,3 @@ set nohlsearch "検索結果文字列の非ハイライト表示
 set clipboard=unnamed
 
 set showmatch
-inoremap { {}<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap " ""<left>
-inoremap ' ''<left>
