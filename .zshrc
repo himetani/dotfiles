@@ -20,6 +20,7 @@ alias t='vim ~/Text/inbox.md'
 alias run='./run.sh'
 alias sed='gsed'
 alias tmux="TERM=screen-256color-bce tmux"
+alias gd="godoc -http :6060"
 
 # 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
