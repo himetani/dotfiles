@@ -13,3 +13,5 @@ command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 let g:go_fmt_command = "goimports"
+
+let g:go_metalinter_autosave = 1
