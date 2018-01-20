@@ -1,5 +1,6 @@
 export DOTPATH=~/git/dotfiles
 export PATH="${DOTPATH}/bin:${PATH}"
+export EDITOR="vim"
 
 # Company specific config
 if [ -e ~/company ];then
@@ -64,3 +65,7 @@ if [ -n $TMUX ]; then
 fi
 
 export GIT_EDITOR=vim
+
+export CONFIGCTL_TEST_PRIVATE_KEY=$HOME/sandbox/configctl/.vagrant/machines/default/virtualbox/private_key
+
+eval "$(direnv hook zsh)"

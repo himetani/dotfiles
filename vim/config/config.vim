@@ -32,3 +32,6 @@ set nohlsearch "検索結果文字列の非ハイライト表示
 set clipboard=unnamed
 
 set showmatch
+
+au BufWritePost * mkview
+autocmd BufReadPost * loadview
