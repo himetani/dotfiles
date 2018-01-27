@@ -69,3 +69,6 @@ export GIT_EDITOR=vim
 export CONFIGCTL_TEST_PRIVATE_KEY=$HOME/sandbox/configctl/.vagrant/machines/default/virtualbox/private_key
 
 eval "$(direnv hook zsh)"
+
+bindkey "^P" up-line-or-history
+bindkey "^N" down-line-or-history
