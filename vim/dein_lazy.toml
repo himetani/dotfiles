@@ -10,3 +10,13 @@ on_ft = ['go']
 repo = 'zchee/deoplete-go'
 on_ft = ['go']
 build = 'make'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+on_ft = ['go']
+depends = 'fzf'
+
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+merged = 0

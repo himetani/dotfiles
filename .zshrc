@@ -72,3 +72,5 @@ eval "$(direnv hook zsh)"
 
 bindkey "^P" up-line-or-history
 bindkey "^N" down-line-or-history
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

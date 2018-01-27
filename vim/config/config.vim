@@ -35,3 +35,6 @@ set showmatch
 
 au BufWritePost * mkview
 autocmd BufReadPost * loadview
+
+nmap <C-i> :FZF<cr>
+imap <C-i> <esc>:<C-u>FZF<cr>

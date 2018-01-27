@@ -15,3 +15,7 @@ command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 let g:go_fmt_command = "goimports"
 
 let g:go_metalinter_autosave = 1
+
+set rtp+=/usr/local/opt/fzf
+nmap <C-g> :GoDecls<cr>
+imap <C-g> <esc>:<C-u>GoDecls<cr>
