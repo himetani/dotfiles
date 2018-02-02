@@ -5,6 +5,12 @@ if [ ! -h $HOME/.zshrc ]; then
     ln -sn $HOME/git/dotfiles/.zshrc $HOME/.zshrc
 fi
 
+# zsh
+if [ ! -h $HOME/.fzf.zsh ]; then
+    ln -sn $HOME/git/dotfiles/zsh/fzf/fzf.zsh $HOME/.fzf.zsh
+fi
+
+
 # vim
 if [ ! -d $HOME/.vim ]; then
     mkdir -p $HOME/.vim
