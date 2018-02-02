@@ -76,6 +76,6 @@ bindkey "^A" beginning-of-line
 bindkey "^E" end-of-line
 bindkey "^B" backward-char
 bindkey "^F" forward-char
-bindkey "^D" backward-delete-char
+bindkey "^D" delete-char-or-list
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
