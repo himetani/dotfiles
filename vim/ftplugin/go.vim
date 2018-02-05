@@ -18,6 +18,3 @@ let g:go_metalinter_autosave = 1
 set rtp+=/usr/local/opt/fzf
 nmap <C-g> :GoDecls<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
-
-nmap <silent> <Tab> <Nop>
-imap <silent> <Tab> <Tab>
