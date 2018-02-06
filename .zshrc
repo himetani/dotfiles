@@ -22,6 +22,7 @@ alias run='./run.sh'
 alias sed='gsed'
 alias tmux="TERM=screen-256color-bce tmux"
 alias gd="godoc -http :6060"
+alias vimf='vim $(fzf)'
 
 # 履歴ファイルの保存先
 export HISTFILE=${HOME}/.zsh_history
@@ -77,5 +78,6 @@ bindkey "^E" end-of-line
 bindkey "^B" backward-char
 bindkey "^F" forward-char
 bindkey "^D" delete-char-or-list
+bindkey "^[" "\e" 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

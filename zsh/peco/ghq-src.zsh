@@ -7,4 +7,4 @@ function peco-ghq-src() {
     zle -R -c
 }
 zle -N peco-ghq-src
-bindkey '^[' peco-ghq-src
+bindkey '^]' peco-ghq-src
