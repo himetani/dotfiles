@@ -10,6 +10,12 @@ if [ ! -h $HOME/.fzf.zsh ]; then
     ln -sn $HOME/git/dotfiles/zsh/fzf/fzf.zsh $HOME/.fzf.zsh
 fi
 
+# tmux 
+if [ ! -h $HOME/.tmux.conf ]; then
+    ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
+fi
+
+
 
 # vim
 if [ ! -d $HOME/.vim ]; then
