@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# zsh
+if [ ! -h $HOME/.zshrc ]; then
+    echo 'ln -sn $HOME/git/dotfiles/.zshrc $HOME/.zshrc'
+    ln -sn $HOME/git/dotfiles/.zshrc $HOME/.zshrc
+fi
+
+# tmux 
+if [ ! -h $HOME/.tmux.conf ]; then
+    echo 'ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
+    ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
+fi
+
+# vim
+if [ ! -h $HOME/.vimrc ]; then
+    echo 'ln -sn $HOME/git/dotfiles/vimrc $HOME/.vimrc'
+    ln -sn $HOME/git/dotfiles/vimrc $HOME/.vimrc
+fi
+
+# tig
+if [ ! -h $HOME/.tigrc ]; then
+    echo 'ln -sn $HOME/git/dotfiles/.tigrc $HOME/.tigrc'
+    ln -sn $HOME/git/dotfiles/.tigrc $HOME/.tigrc
+fi
+
