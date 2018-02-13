@@ -98,6 +98,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.groovy setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.zsh setlocal expandtab shiftwidth=4 tabstop=4
   
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
