@@ -2,8 +2,8 @@
 
 # zsh
 if [ ! -h $HOME/.zshrc ]; then
-    echo 'ln -sn $HOME/git/dotfiles/.zshrc $HOME/.zshrc'
-    ln -sn $HOME/git/dotfiles/.zshrc $HOME/.zshrc
+    echo 'ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
+    ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
 fi
 
 # tmux 
@@ -20,7 +20,7 @@ fi
 
 # tig
 if [ ! -h $HOME/.tigrc ]; then
-    echo 'ln -sn $HOME/git/dotfiles/.tigrc $HOME/.tigrc'
-    ln -sn $HOME/git/dotfiles/.tigrc $HOME/.tigrc
+    echo 'ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
+    ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
 fi
 
