@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ "${TMUX}" = "" ]; then
+  echo "Exec on tmux session"
+  exit 1
+fi
+
+tmux send-keys "ssh $1" C-m
+
+for i in $*;do
+    if [ $1 != $i ]; then
+        tmux split-window -h 
+        tmux select-layout even-horizontal 
+        tmux send-keys "ssh $2" C-m
+    fi
+done
+
+tmux select-pane -t 0
