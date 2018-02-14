@@ -1,0 +1,6 @@
+{
+"Keymap": {
+  "Tab": "peco.ToggleSelectionAndSelectNext",
+  "C-v": "peco.ToggleRangeMode"
+}
+}

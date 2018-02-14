@@ -24,3 +24,9 @@ if [ ! -h $HOME/.tigrc ]; then
     ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
 fi
 
+# peco
+if [ ! -d $HOME/.peco ]; then
+    echo 'ln -sn $HOME/git/dotfiles/peco $HOME/.peco'
+    ln -sn $HOME/git/dotfiles/peco $HOME/.peco
+fi
+
