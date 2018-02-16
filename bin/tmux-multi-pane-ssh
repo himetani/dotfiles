@@ -11,7 +11,7 @@ for i in $*;do
     if [ $1 != $i ]; then
         tmux split-window -h 
         tmux select-layout even-horizontal 
-        tmux send-keys "ssh $2" C-m
+        tmux send-keys "ssh $i" C-m
     fi
 done
 
