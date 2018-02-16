@@ -67,6 +67,7 @@ syntax on
 set clipboard=unnamed
 noremap! ¥ \
 set backspace=indent,eol,start
+set paste
 
 " ----------------------------------------------------------------------------
 " indentLine
