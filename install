@@ -18,6 +18,15 @@ if [ ! -h $HOME/.vimrc ]; then
     ln -sn $HOME/git/dotfiles/vimrc $HOME/.vimrc
 fi
 
+# nvim
+if [ ! -h $HOME/.config/nvim/init.vim ]; then
+    echo 'mkdir -p $HOME/.config/nvim'
+    mkdir -p $HOME/.config/nvim
+    echo 'ln -sn $HOME/git/dotfiles/vimrc $HOME/.config/nvim/init.vim'
+    ln -sn $HOME/git/dotfiles/vimrc $HOME/.config/nvim/init.vim
+fi
+
+
 # tig
 if [ ! -h $HOME/.tigrc ]; then
     echo 'ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'

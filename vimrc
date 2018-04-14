@@ -15,9 +15,17 @@ let g:lightline = {
     \'colorscheme': 'solarized',
     \}
 
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
+"Plug 'Shougo/deoplete.nvim'
+"Plug 'roxma/nvim-yarp'
+"Plug 'roxma/vim-hug-neovim-rpc'
+"let g:deoplete#enable_at_startup = 1
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 let g:deoplete#enable_at_startup = 1
 
 Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -59,8 +67,8 @@ set smartcase
 set wrapscan
 
 " preserve buffer
-au BufWritePost * mkview
-autocmd BufReadPost * loadview
+"au BufWritePost * mkview
+"autocmd BufReadPost * loadview
 
 " other
 syntax on
