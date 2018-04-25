@@ -147,7 +147,7 @@ let g:go_highlight_operators = 1
 let g:go_modifytags_transform = 'camelcase'
 let g:go_fold_enable = []
 let g:go_metalinter_autosave = 1
-let g:go_auto_type_info = 1
+let g:go_auto_type_info = 0
 set updatetime=100
 let g:go_auto_sameids = 1
 

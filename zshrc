@@ -29,9 +29,9 @@ alias sed='gsed'
 alias tmux="TERM=screen-256color-bce tmux"
 alias gd="godoc -http :6060"
 alias vimf='vim $(fzf)'
-if [ -n $TMUX ]; then
-   alias vim="TERM=screen-256color vim"
-fi
+#if [ -n $TMUX ]; then
+#   alias vim="TERM=screen-256color vim"
+#fi
 alias vim="nvim"
 
 # ============================================================================
