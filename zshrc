@@ -58,11 +58,16 @@ zstyle ':completion:*' recent-dirs-insert both
 zstyle ':chpwd:*' recent-dirs-max 500
 zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-pushd true
-zstyle ':vcs_info:git:*' formats '%b'
+zstyle ':vcs_info:git:*' formats '(%b) '
 
 precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
-precmd_vcs_info() { vcs_info }
+precmd_vcs_info() { 
+	vcs_info 
+	RPROMPT="%F{red}${vcs_info_msg_0_}%f"
+}
+
+PROMPT="%F{green}(%n)%f %c => "
 
 function _ssh {
   compadd `fgrep 'Host ' ~/.ssh/config | awk '{print $2}' | sort`;
