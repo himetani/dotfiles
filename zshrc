@@ -33,6 +33,8 @@ alias vimf='vim $(fzf)'
 #   alias vim="TERM=screen-256color vim"
 #fi
 alias vim="nvim"
+alias gst="git status"
+alias gl="git log"
 
 # ============================================================================
 # history
@@ -64,10 +66,10 @@ precmd_functions+=( precmd_vcs_info )
 setopt prompt_subst
 precmd_vcs_info() { 
 	vcs_info 
-	RPROMPT="%F{red}${vcs_info_msg_0_}%f"
+	RPROMPT="%F{green}${vcs_info_msg_0_}%f"
 }
 
-PROMPT="%F{green}(%n)%f %c => "
+PROMPT="%F{green}(%n)%f => %c %% "
 
 function _ssh {
   compadd `fgrep 'Host ' ~/.ssh/config | awk '{print $2}' | sort`;
@@ -161,6 +163,9 @@ fi
 
 # fzf default keybindings and completion
 for f (${FZFPATH}/**/*.zsh) source "${f}"
+
+# git-extras completion
+source ./git-extras-completion.zsh
 
 eval "$(direnv hook zsh)"
 
