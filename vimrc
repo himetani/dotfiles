@@ -68,7 +68,7 @@ set wrapscan
 
 " preserve buffer
 autocmd BufWritePost * mkview
-autocmd BufReadPost * loadview
+autocmd BufReadPost * silent! loadview
 
 " Don't save options.
 set viewoptions-=options
