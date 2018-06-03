@@ -35,6 +35,7 @@ alias vimf='vim $(fzf)'
 alias vim="nvim"
 alias gst="git status"
 alias gl="git log"
+alias gb="git branch"
 
 # ============================================================================
 # history
@@ -165,7 +166,7 @@ fi
 for f (${FZFPATH}/**/*.zsh) source "${f}"
 
 # git-extras completion
-source ./git-extras-completion.zsh
+source ${DOTPATH}/git-extras-completion.zsh
 
 eval "$(direnv hook zsh)"
 
