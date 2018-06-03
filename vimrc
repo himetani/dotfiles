@@ -67,8 +67,11 @@ set smartcase
 set wrapscan
 
 " preserve buffer
-"au BufWritePost * mkview
-"autocmd BufReadPost * loadview
+autocmd BufWritePost * mkview
+autocmd BufReadPost * loadview
+
+" Don't save options.
+set viewoptions-=options
 
 " other
 syntax on
