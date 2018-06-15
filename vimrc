@@ -115,6 +115,7 @@ augroup filetypedetect
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType xml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
 " ----------------------------------------------------------------------------
