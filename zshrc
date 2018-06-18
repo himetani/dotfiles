@@ -36,6 +36,7 @@ alias vimf='vim $(fzf)'
 alias gst="git status"
 alias gl="git log"
 alias gb="git branch"
+alias dco="docker-compose"
 
 # ============================================================================
 # history
