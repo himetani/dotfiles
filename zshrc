@@ -32,7 +32,7 @@ alias vimf='vim $(fzf)'
 #if [ -n $TMUX ]; then
 #   alias vim="TERM=screen-256color vim"
 #fi
-alias vim="nvim"
+#alias vim="nvim"
 alias gst="git status"
 alias gl="git log"
 alias gb="git branch"

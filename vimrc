@@ -15,10 +15,6 @@ let g:lightline = {
     \'colorscheme': 'solarized',
     \}
 
-"Plug 'Shougo/deoplete.nvim'
-"Plug 'roxma/nvim-yarp'
-"Plug 'roxma/vim-hug-neovim-rpc'
-"let g:deoplete#enable_at_startup = 1
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 else
@@ -28,7 +24,6 @@ else
 endif
 let g:deoplete#enable_at_startup = 1
 
-Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'tag': 'v1.17' }
 Plug 'majutsushi/tagbar'
 
@@ -154,6 +149,7 @@ let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 0
 set updatetime=100
 let g:go_auto_sameids = 1
+let g:go_gocode_unimported_packages = 1
 
 nmap <C-g> :GoDecls<cr>
 imap <C-g> <esc>:<C-u>GoDecls<cr>
@@ -192,6 +188,7 @@ augroup go
   autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
   autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+  inoremap <Leader><Tab> <C-x><C-o>
 augroup END
 
 " ----------------------------------------------------------------------------
