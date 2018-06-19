@@ -27,7 +27,6 @@ alias grep='grep -d skip'
 alias t='vim ~/Text/inbox.md'
 alias sed='gsed'
 alias tmux="TERM=screen-256color-bce tmux"
-alias gd="godoc -http :6060"
 alias vimf='vim $(fzf)'
 #if [ -n $TMUX ]; then
 #   alias vim="TERM=screen-256color vim"
@@ -36,6 +35,7 @@ alias vimf='vim $(fzf)'
 alias gst="git status"
 alias gl="git log"
 alias gb="git branch"
+alias gd="git diff"
 alias dco="docker-compose"
 
 # ============================================================================
