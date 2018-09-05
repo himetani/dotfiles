@@ -31,6 +31,7 @@ let mapleader = "\<Space>"
 
 "display
 set number
+set relativenumber
 set ruler
 set showcmd
 set showmode
@@ -99,6 +100,7 @@ augroup filetypedetect
   
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType javascript setlocal expandtab shiftwidth=4 tabstop=4
   autocmd FileType xml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
