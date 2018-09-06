@@ -7,6 +7,7 @@ export EDITOR="vim"
 export FZFPATH=$HOME/.fzf
 export PATH="/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
 export GOPATH=$HOME/dev
+export GO111MODULE=on
 # dircolors
 export LSCOLORS=exgxcxdxbxegedabagacad
 
