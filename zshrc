@@ -5,7 +5,7 @@
 export DOTPATH=$HOME/git/dotfiles
 export EDITOR="vim"
 export FZFPATH=$HOME/.fzf
-export PATH="/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
+export PATH="/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
 export GOPATH=$HOME/dev
 export GO111MODULE=on
 # dircolors
@@ -163,6 +163,11 @@ bindkey '^U' peco-vivaldi-history
 if [ -e ~/company ];then
 	for f (~/company/*.zsh) source "${f}"
 fi
+
+if [ -e ~/private ];then
+	for f (~/private/*.zsh) source "${f}"
+fi
+
 
 # fzf default keybindings and completion
 for f (${FZFPATH}/**/*.zsh) source "${f}"
