@@ -38,6 +38,7 @@ alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 alias dco="docker-compose"
+alias kb="kubectl"
 
 # ============================================================================
 # history
