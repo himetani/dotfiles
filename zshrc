@@ -17,8 +17,6 @@ PROMPT="[%n %~] \$vcs_info_msg_0_ %% "
 
 export GIT_EDITOR=vim
 
-export CONFIGCTL_TEST_PRIVATE_KEY=$HOME/sandbox/configctl/.vagrant/machines/default/virtualbox/private_key
-
 # ============================================================================
 # alias
 # ============================================================================
