@@ -21,7 +21,8 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
+
 
 call plug#end()
 endif
@@ -106,6 +107,7 @@ augroup filetypedetect
   autocmd FileType xml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType dockerfile setlocal expandtab shiftwidth=4 tabstop=4
 augroup END
 
 " ----------------------------------------------------------------------------
