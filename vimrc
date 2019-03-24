@@ -97,7 +97,8 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.html setlocal noet ts=4 sw=4
   autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
-  autocmd BufNewFile,BufRead *.groovy setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.groovy setf groovy
+  autocmd BufNewFile,BufRead Jenkinsfile setf groovy
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.zsh setlocal expandtab shiftwidth=4 tabstop=4
   
@@ -108,6 +109,7 @@ augroup filetypedetect
   autocmd FileType sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType dockerfile setlocal expandtab shiftwidth=4 tabstop=4
+  autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4
 augroup END
 
 " ----------------------------------------------------------------------------
