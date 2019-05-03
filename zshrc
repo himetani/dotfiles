@@ -5,7 +5,7 @@
 export DOTPATH=$HOME/git/dotfiles
 export EDITOR="vim"
 export FZFPATH=$HOME/.fzf
-export PATH="/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
+export PATH="$HOME/company/bin:/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
 export GOPATH=$HOME/dev
 export GO111MODULE=on
 # dircolors
@@ -179,3 +179,7 @@ eval "$(direnv hook zsh)"
 # ============================================================================
 # envrc
 # ============================================================================
+source /anaconda3/etc/profile.d/conda.sh
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/mc mc

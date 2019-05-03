@@ -55,6 +55,7 @@ set matchtime=1
 set ignorecase
 set smartcase
 set wrapscan
+set hlsearch
 
 " preserve buffer
 autocmd BufWritePost * mkview
@@ -68,7 +69,8 @@ syntax on
 set clipboard=unnamed
 noremap! ¥ \
 set backspace=indent,eol,start
-
+set encoding=utf-8
+set ff=unix
 " ----------------------------------------------------------------------------
 " indentLine
 " ----------------------------------------------------------------------------
@@ -148,6 +150,7 @@ let g:go_metalinter_autosave = 1
 let g:go_auto_type_info = 0
 set updatetime=100
 let g:go_auto_sameids = 1
+let g:go_snippet_case_type="camelcase"
 "let g:go_gocode_unimported_packages = 1
 
 nmap <C-g> :GoDecls<cr>
