@@ -5,7 +5,7 @@
 export DOTPATH=$HOME/git/dotfiles
 export EDITOR="vim"
 export FZFPATH=$HOME/.fzf
-export PATH="$HOME/company/bin:/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
+export PATH="$HOME/.private/bin:$HOME/company/bin:/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
 export GOPATH=$HOME/dev
 export GO111MODULE=on
 # dircolors
@@ -16,6 +16,9 @@ export PKG_CONFIG_PATH=$HOME/.pkgconfig
 PROMPT="[%n %~] \$vcs_info_msg_0_ %% "
 
 export GIT_EDITOR=vim
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # ============================================================================
 # alias
@@ -176,10 +179,9 @@ source ${DOTPATH}/git-extras-completion.zsh
 
 eval "$(direnv hook zsh)"
 
+# kubectl completion
+source <(kubectl completion zsh)
+
 # ============================================================================
 # envrc
 # ============================================================================
-source /anaconda3/etc/profile.d/conda.sh
-
-autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/local/bin/mc mc

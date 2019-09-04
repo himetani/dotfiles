@@ -21,9 +21,6 @@ Plug 'majutsushi/tagbar'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
 Plug 'junegunn/fzf.vim'
 
-Plug 'stamblerre/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-
-
 call plug#end()
 endif
 
@@ -33,8 +30,8 @@ endif
 let mapleader = "\<Space>"
 
 "display
-set number
 set relativenumber
+set number
 set ruler
 set showcmd
 set showmode
@@ -71,6 +68,8 @@ noremap! ¥ \
 set backspace=indent,eol,start
 set encoding=utf-8
 set ff=unix
+map <C-n> :set relativenumber!<CR>
+
 " ----------------------------------------------------------------------------
 " indentLine
 " ----------------------------------------------------------------------------
@@ -100,7 +99,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.groovy setf groovy
-  autocmd BufNewFile,BufRead Jenkinsfile setf groovy
+  autocmd BufNewFile,BufRead Jenkinsfile* setf groovy
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.zsh setlocal expandtab shiftwidth=4 tabstop=4
   
@@ -112,6 +111,7 @@ augroup filetypedetect
   autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType dockerfile setlocal expandtab shiftwidth=4 tabstop=4
   autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4
+  autocmd FileType sshconfig setlocal expandtab shiftwidth=4 tabstop=4
 augroup END
 
 " ----------------------------------------------------------------------------
@@ -127,27 +127,30 @@ let g:go_sameid_search_enabled = 1
 let g:go_test_prepend_name = 1
 let g:go_list_type = "quickfix"
 let g:go_def_mode = "guru"
+let g:go_guru_scope = ["..."]
+let g:go_auto_type_info = 0
 let g:go_echo_command_info = 1
 let g:go_gocode_autobuild = 0
 let g:go_gocode_unimported_packages = 1
-let g:go_guru_scope = ["..."]
 
 let g:go_autodetect_gopath = 1
 let g:go_info_mode = "guru"
 let g:go_metalinter_autosave_enabled = ['vet', 'golint']
+let g:go_metalinter_enabled= ['vet', 'golint']
 let g:go_highlight_space_tab_error = 0
 let g:go_highlight_array_whitespace_error = 0
 let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
-let g:go_highlight_types = 1
-let g:go_highlight_format_strings = 1
 let g:go_highlight_operators = 1
+let g:go_highlight_types = 0
+let g:go_highlight_format_strings = 0
+let g:go_highlight_function_calls = 0
+let g:go_hilight_function_calls = 0
 
 let g:go_modifytags_transform = 'camelcase'
 let g:go_fold_enable = []
 let g:go_metalinter_autosave = 1
-let g:go_auto_type_info = 0
 set updatetime=100
 let g:go_auto_sameids = 1
 let g:go_snippet_case_type="camelcase"
