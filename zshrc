@@ -5,8 +5,9 @@
 export DOTPATH=$HOME/git/dotfiles
 export EDITOR="vim"
 export FZFPATH=$HOME/.fzf
-export PATH="$HOME/.private/bin:$HOME/company/bin:/usr/local/bin:/usr/local/Cellar/git/2.17.0/bin:${FZFPATH}/bin:${DOTPATH}/bin:$GOPATH/bin:/usr/local/go/bin:${PATH}"
-export GOPATH=$HOME/dev
+export GOPATH=`go env GOPATH`
+export GOBIN="${GOPATH}/bin"
+export PATH="${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${DOTPATH}/bin:${GOBIN}:${PATH}"
 export GO111MODULE=on
 # dircolors
 export LSCOLORS=exgxcxdxbxegedabagacad
@@ -20,16 +21,18 @@ export GIT_EDITOR=vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
+
 # ============================================================================
 # alias
 # ============================================================================
 
 alias ls='ls -G'
 alias grep='grep -d skip'
-alias t='vim ~/Text/inbox.md'
+alias t='vim ~/Documents/inbox.md'
 alias sed='gsed'
 alias tmux="TERM=screen-256color-bce tmux"
 alias vimf='vim $(fzf)'
+alias vim='/usr/local/bin/vim'
 #if [ -n $TMUX ]; then
 #   alias vim="TERM=screen-256color vim"
 #fi
@@ -40,6 +43,7 @@ alias gb="git branch"
 alias gd="git diff"
 alias dco="docker-compose"
 alias kc="kubectl"
+alias gr="gitlab-runner"
 
 # ============================================================================
 # history
@@ -79,6 +83,8 @@ PROMPT="%F{green}(%n)%f => %c %% "
 function _ssh {
   compadd `fgrep 'Host ' ~/.ssh/config | awk '{print $2}' | sort`;
 }
+
+setopt no_beep
 
 # ============================================================================
 # bindkey
@@ -166,10 +172,9 @@ if [ -e ~/company ];then
 	for f (~/company/*.zsh) source "${f}"
 fi
 
-if [ -e ~/private ];then
-	for f (~/private/*.zsh) source "${f}"
-fi
-
+#if [ -e ~/private ];then
+#	for f (~/private/*.zsh) source "${f}"
+#fi
 
 # fzf default keybindings and completion
 for f (${FZFPATH}/**/*.zsh) source "${f}"

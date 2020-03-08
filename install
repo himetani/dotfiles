@@ -26,7 +26,6 @@ if [ ! -h $HOME/.config/nvim/init.vim ]; then
     ln -sn $HOME/git/dotfiles/vimrc $HOME/.config/nvim/init.vim
 fi
 
-
 # tig
 if [ ! -h $HOME/.tigrc ]; then
     echo 'ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
@@ -39,3 +38,9 @@ if [ ! -d $HOME/.peco ]; then
     ln -sn $HOME/git/dotfiles/peco $HOME/.peco
 fi
 
+# gitcoinfg
+if [ ! -h $HOME/private/gitconfig ]; then
+    mkdir -p $HOME/private
+    echo 'ln -sn $HOME/git/dotfiles/gitconfig $HOME/private/gitconfig'
+    ln -sn $HOME/git/dotfiles/gitconfig $HOME/private/gitconfig
+fi

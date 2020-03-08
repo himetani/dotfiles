@@ -15,7 +15,7 @@ let g:lightline = {
     \'colorscheme': 'solarized',
     \}
 
-Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'tag': 'v1.17' }
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'majutsushi/tagbar'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
@@ -30,7 +30,7 @@ endif
 let mapleader = "\<Space>"
 
 "display
-set relativenumber
+"set relativenumber
 set number
 set ruler
 set showcmd
@@ -69,6 +69,7 @@ set backspace=indent,eol,start
 set encoding=utf-8
 set ff=unix
 map <C-n> :set relativenumber!<CR>
+set belloff=all
 
 " ----------------------------------------------------------------------------
 " indentLine
@@ -99,7 +100,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.groovy setf groovy
-  autocmd BufNewFile,BufRead Jenkinsfile* setf groovy
+  autocmd BufNewFile,BufRead Jenkinsfile*,*Jenkinsfile setf groovy
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.zsh setlocal expandtab shiftwidth=4 tabstop=4
   
@@ -112,6 +113,7 @@ augroup filetypedetect
   autocmd FileType dockerfile setlocal expandtab shiftwidth=4 tabstop=4
   autocmd FileType groovy setlocal expandtab shiftwidth=4 tabstop=4
   autocmd FileType sshconfig setlocal expandtab shiftwidth=4 tabstop=4
+  autocmd FileType proto setlocal expandtab shiftwidth=2 tabstop=2
 augroup END
 
 " ----------------------------------------------------------------------------
