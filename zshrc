@@ -31,7 +31,7 @@ alias ls='ls -G'
 alias grep='grep -d skip'
 alias t='vim ~/Documents/inbox.md'
 alias sed='gsed'
-alias tmux="TERM=screen-256color-bce tmux"
+alias tmux="TERM=screen-256color-bce tmux -u"
 alias vimf='vim $(fzf)'
 alias vim='/usr/local/bin/vim'
 #if [ -n $TMUX ]; then
