@@ -236,4 +236,4 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
   \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
-command! -bang Json <esc>:%!jq '.'
+command! -bang Json <esc>:!jq '.'

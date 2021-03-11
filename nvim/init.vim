@@ -3,10 +3,19 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'hoob3rt/lualine.nvim'
   Plug 'ryanoasis/vim-devicons'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'majutsushi/tagbar'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
+  Plug 'antoinemadec/FixCursorHold.nvim'
+  Plug 'lambdalisue/fern.vim'
+  Plug 'lambdalisue/nerdfont.vim'
+  Plug 'lambdalisue/fern-renderer-nerdfont.vim'
+  Plug 'lambdalisue/fern-hijack.vim'
+  Plug 'lambdalisue/glyph-palette.vim'
+  Plug 'lambdalisue/fern-mapping-project-top.vim'
 call plug#end() 
 endif
 
@@ -73,7 +82,7 @@ end
 
 -- Use a loop to conveniently both setup defined servers 
 -- and map buffer local keybindings when the language server attaches
-local servers = { "gopls" }
+local servers = { "bashls", "gopls", "vimls" }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { 
     on_attach=require'completion'.on_attach
@@ -122,3 +131,15 @@ set clipboard=unnamed
 imap <silent> <c-p> <Plug>(completion_trigger)
 set completeopt=menu,noinsert
 
+"fern
+let g:fern#renderer = "nerdfont"
+let g:cursorhold_updatetime = 100
+
+augroup my-glyph-palette
+  autocmd! *
+  autocmd FileType fern call glyph_palette#apply()
+augroup END
+
+set inccommand=nosplit
+
+runtime! settings/*.vim
