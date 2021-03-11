@@ -19,26 +19,9 @@ if [ ! -h $HOME/.vimrc ]; then
 fi
 
 # nvim
-if [ ! -h $HOME/.config/nvim/init.vim ]; then
-    echo '=> mkdir -p $HOME/.config/nvim'
-    mkdir -p $HOME/.config/nvim
-    echo '=> ln -sn $HOME/git/dotfiles/nvim/init.vim $HOME/.config/nvim/init.vim'
-    ln -sn $HOME/git/dotfiles/nvim/init.vim $HOME/.config/nvim/init.vim
-fi
-
-if [ ! -d $HOME/.config/nvim/settings ]; then
-    echo '=> mkdir -p $HOME/.config/nvim/settings'
-    mkdir -p $HOME/.config/nvim/settings
-fi
-
-if [ ! -h $HOME/.config/nvim/settings/mappings.vim ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/nvim/settings/mappings.vim $HOME/.config/nvim/settings/mappings.vim'
-    ln -sn $HOME/git/dotfiles/nvim/settings/mappings.vim $HOME/.config/nvim/settings/mappings.vim
-fi
-
-if [ ! -h $HOME/.config/nvim/settings/options.vim ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/nvim/settings/options.vim $HOME/.config/nvim/settings/options.vim'
-    ln -sn $HOME/git/dotfiles/nvim/settings/options.vim $HOME/.config/nvim/settings/options.vim
+if [ ! -h $HOME/.config/nvim ]; then
+    echo '=> ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim'
+    ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim
 fi
 
 # tig

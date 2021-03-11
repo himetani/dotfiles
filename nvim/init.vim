@@ -26,7 +26,7 @@ colorscheme nord
 set encoding=UTF-8
 
 "autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
-
+"LSP
 lua <<EOF
 local lualine = require('lualine')
 lualine.status()
