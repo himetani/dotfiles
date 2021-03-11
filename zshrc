@@ -22,6 +22,7 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 source $HOME/.cargo/env
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # ============================================================================
 # alias
