@@ -20,18 +20,8 @@ call plug#end()
 endif
 
 runtime! settings/*.vim
-luafile ~/.config/nvim/lua/lsp.lua
-luafile ~/.config/nvim/lua/plugins.lua
-
-autocmd BufWritePre *.go lua goimports(1000)
-
-au! BufWritePost $MYVIMRC source %
-
-set clipboard=unnamed
-
-"completion-nvim
-imap <silent> <c-p> <Plug>(completion_trigger)
-set completeopt=menu,noinsert
+lua require('lsp')
+lua require('plugins')
 
 "fern
 let g:fern#renderer = "nerdfont"
@@ -39,5 +29,5 @@ let g:cursorhold_updatetime = 100
 
 augroup my-glyph-palette
   autocmd! *
-  autocmd FileType fern call glyph_palette#apply()
+  autocmd! FileType fern call glyph_palette#apply()
 augroup END

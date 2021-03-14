@@ -23,6 +23,9 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
 
+	--completion-nvim
+	buf_set_keymap('i', '<c-p>', '<Plug>(completion_trigger)', opts)
+
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
 		buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
@@ -83,3 +86,12 @@ function goimports(timeoutms)
 		vim.lsp.buf.execute_command(action)
 	end
 end 
+
+vim.cmd('augroup lsp')
+vim.cmd('autocmd!')
+vim.cmd("autocmd BufWritePre *.go lua goimports(1000)")
+vim.cmd('augroup END')
+
+--completion-nvim
+vim.o.completeopt = 'menu,noinsert'
+
