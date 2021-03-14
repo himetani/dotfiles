@@ -24,8 +24,8 @@ lua require('lsp')
 lua require('plugins')
 
 "fern
-let g:fern#renderer = "nerdfont"
-let g:cursorhold_updatetime = 100
+"let g:fern#renderer = "nerdfont"
+"let g:cursorhold_updatetime = 100
 
 augroup my-glyph-palette
   autocmd! *

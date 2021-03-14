@@ -1,9 +1,10 @@
 local nvim_lsp = require('lspconfig')
-local on_attach = function(client, bufnr)
+local custom_on_attach = function(client, bufnr)
 	local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+        require'completion'.on_attach(client)
 
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
@@ -11,7 +12,7 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
 	buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 	buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+	buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts) 
 	buf_set_keymap('n', '<space>wa', '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', opts)
 	buf_set_keymap('n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', opts)
 	buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
@@ -22,9 +23,6 @@ local on_attach = function(client, bufnr)
 	buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-
-	--completion-nvim
-	buf_set_keymap('i', '<c-p>', '<Plug>(completion_trigger)', opts)
 
 	-- Set some keybinds conditional on server capabilities
 	if client.resolved_capabilities.document_formatting then
@@ -48,15 +46,6 @@ local on_attach = function(client, bufnr)
 	end
 end
 
--- Use a loop to conveniently both setup defined servers 
--- and map buffer local keybindings when the language server attaches
-local servers = { "bashls", "gopls", "vimls" }
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup { 
-		on_attach=require'completion'.on_attach
-	}
-end
-
 function goimports(timeoutms)
 	local context = { source = { organizeImports = true } }
 	vim.validate { context = { context, "t", true } }
@@ -66,7 +55,7 @@ function goimports(timeoutms)
 
 	-- See the implementation of the textDocument/codeAction callback
 	-- (lua/vim/lsp/handler.lua) for how to do this properly.
-	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params)
 	if not result or next(result) == nil then return end
 	local actions = result[1].result
 	if not actions then return end
@@ -85,7 +74,55 @@ function goimports(timeoutms)
 	else
 		vim.lsp.buf.execute_command(action)
 	end
-end 
+end
+-- Use a loop to conveniently both setup defined servers
+-- and map buffer local keybindings when the language server attaches
+local servers = { "bashls", "gopls", "vimls" }
+for _, lsp in ipairs(servers) do
+  nvim_lsp[lsp].setup {
+    on_attach=custom_on_attach
+  }
+end
+
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+local sumneko_root_path = os.getenv("HOME").."/git/lua-language-server"
+local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  on_attach=custom_on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = vim.split(package.path, ';'),
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = {
+          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
+          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+        },
+      },
+    },
+  },
+}
 
 vim.cmd('augroup lsp')
 vim.cmd('autocmd!')
@@ -94,4 +131,6 @@ vim.cmd('augroup END')
 
 --completion-nvim
 vim.o.completeopt = 'menu,noinsert'
+vim.api.nvim_set_keymap('i', '<c-p>','<plug>(completion_trigger)', { silent=true })
+
 
