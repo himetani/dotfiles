@@ -4,5 +4,5 @@ lualine.options.theme = 'nord'
 lualine.options.icons_enabled = true
 
 -- fern
---print(vim.fern) -- = 'nerdfont'
---let g:cursorhold_updatetime = 100
+vim.api.nvim_set_var("fern#renderer", "nerdfont")
+vim.api.nvim_set_var("cursorhold_updatetime", 100)

@@ -4,7 +4,7 @@ local custom_on_attach = function(client, bufnr)
 	local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
 	buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-        require'completion'.on_attach(client)
+	require'completion'.on_attach(client)
 
 	-- Mappings.
 	local opts = { noremap=true, silent=true }
@@ -79,49 +79,49 @@ end
 -- and map buffer local keybindings when the language server attaches
 local servers = { "bashls", "gopls", "vimls" }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach=custom_on_attach
-  }
+	nvim_lsp[lsp].setup {
+		on_attach=custom_on_attach
+	}
 end
 
 local system_name
 if vim.fn.has("mac") == 1 then
-  system_name = "macOS"
+	system_name = "macOS"
 elseif vim.fn.has("unix") == 1 then
-  system_name = "Linux"
+	system_name = "Linux"
 elseif vim.fn.has('win32') == 1 then
-  system_name = "Windows"
+	system_name = "Windows"
 else
-  print("Unsupported system for sumneko")
+	print("Unsupported system for sumneko")
 end
 
 local sumneko_root_path = os.getenv("HOME").."/git/lua-language-server"
 local sumneko_binary = sumneko_root_path.."/bin/"..system_name.."/lua-language-server"
 
 require'lspconfig'.sumneko_lua.setup {
-  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
-  on_attach=custom_on_attach,
-  settings = {
-    Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = 'LuaJIT',
-        -- Setup your lua path
-        path = vim.split(package.path, ';'),
-      },
-      diagnostics = {
-        -- Get the language server to recognize the `vim` global
-        globals = {'vim'},
-      },
-      workspace = {
-        -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand('$VIMRUNTIME/lua')] = true,
-          [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
-        },
-      },
-    },
-  },
+	cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+	on_attach=custom_on_attach,
+	settings = {
+		Lua = {
+			runtime = {
+				-- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+				version = 'LuaJIT',
+				-- Setup your lua path
+				path = vim.split(package.path, ';'),
+			},
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {'vim'},
+			},
+			workspace = {
+				-- Make the server aware of Neovim runtime files
+				library = {
+					[vim.fn.expand('$VIMRUNTIME/lua')] = true,
+					[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true,
+				},
+			},
+		},
+	},
 }
 
 vim.cmd('augroup lsp')

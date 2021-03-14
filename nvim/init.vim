@@ -23,10 +23,6 @@ runtime! settings/*.vim
 lua require('lsp')
 lua require('plugins')
 
-"fern
-"let g:fern#renderer = "nerdfont"
-"let g:cursorhold_updatetime = 100
-
 augroup my-glyph-palette
   autocmd! *
   autocmd! FileType fern call glyph_palette#apply()
