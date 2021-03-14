@@ -16,6 +16,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'lambdalisue/fern-hijack.vim'
   Plug 'lambdalisue/glyph-palette.vim'
   Plug 'lambdalisue/fern-mapping-project-top.vim'
+  Plug 'mhinz/vim-startify'
 call plug#end() 
 endif
 
