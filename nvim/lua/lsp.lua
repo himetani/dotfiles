@@ -132,5 +132,3 @@ vim.cmd('augroup END')
 --completion-nvim
 vim.o.completeopt = 'menu,noinsert'
 vim.api.nvim_set_keymap('i', '<c-p>','<plug>(completion_trigger)', { silent=true })
-
-
