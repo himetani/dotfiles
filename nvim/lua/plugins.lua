@@ -18,7 +18,7 @@ vim.api.nvim_set_keymap('n', 'gbranch','<cmd>Telescope git_branches<cr>', { sile
 -- vim-fugitive
 vim.api.nvim_set_keymap('n', 'gdiff','<cmd>Gdiffsplit<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gadd','<cmd>Gwrite<cr>', { silent=true, noremap=true })
-vim.api.nvim_set_keymap('n', 'gcommit','<cmd>Gcommit<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', 'gcommit','<cmd>Git commit<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gblame','<cmd>Gblame<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gpull','<cmd>Gpull<cr>', { silent=true, noremap=true })
 
