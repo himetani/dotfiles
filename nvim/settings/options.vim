@@ -46,6 +46,6 @@ set clipboard=unnamedplus
 noremap! ¥ \
 set backspace=indent,eol,start
 set ff=unix
-map <C-n> :set relativenumber!<CR>
+nmap <C-r> :set relativenumber!<CR>
 set belloff=all
 set dictionary=/usr/share/dict/words
