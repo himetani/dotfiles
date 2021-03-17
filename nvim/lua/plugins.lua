@@ -27,3 +27,5 @@ vim.api.nvim_set_var('fubitive_domain_pattern', 'git.rakuten-it.com')
 
 -- tagbar
 vim.api.nvim_set_keymap('n', '<c-g>','<cmd>Tagbar<cr>', { silent=true, noremap=true })
+
+
