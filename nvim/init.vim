@@ -18,6 +18,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'lambdalisue/fern-mapping-project-top.vim'
   Plug 'mhinz/vim-startify'
   Plug 'tommcdo/vim-fubitive'
+  Plug 'vim-test/vim-test'
 call plug#end() 
 endif
 
@@ -40,5 +41,3 @@ augroup fern-custom
   autocmd! *
   autocmd FileType fern call s:init_fern()
 augroup END
-
-map 7 <C-o>
