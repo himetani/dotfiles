@@ -22,18 +22,8 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
 call plug#end() 
 endif
 
+let mapleader = "\<Space>"
+
 runtime! settings/*.vim
 lua require('lsp')
 lua require('plugins')
-
-" Fern
-function! s:init_fern() abort 
-  nmap <buffer> <cr> <Plug>(fern-action-open-or-expand)
-  nmap <buffer> s <Plug>(fern-action-open:side)<C-w>p<C-o><C-w>w
-endfunction
-
-augroup fern-custom
-  autocmd! *
-  autocmd FileType fern call s:init_fern()
-  autocmd! FileType fern call glyph_palette#apply()
-augroup END

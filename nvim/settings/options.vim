@@ -1,5 +1,4 @@
 "display
-set relativenumber
 set number
 set ruler
 set showcmd
@@ -46,6 +45,5 @@ set clipboard=unnamedplus
 noremap! ¥ \
 set backspace=indent,eol,start
 set ff=unix
-nmap <C-r> :set relativenumber!<CR>
 set belloff=all
 set dictionary=/usr/share/dict/words
