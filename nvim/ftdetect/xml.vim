@@ -3,6 +3,6 @@ augroup xml
   au BufRead,BufNewFile *.xml map <buffer> f :call XMLFormat()<cr>
 augroup END
 function XMLFormat()
-      %s/></>\r</g
-      normal gg=G
+  %s/></>\r</g
+  normal gg=G
 endfunction
