@@ -10,7 +10,7 @@ vim.api.nvim_set_var("cursorhold_updatetime", 100)
 -- vim-startify
 vim.api.nvim_set_var("startify_bookmarks", {"~/.config/nvim/init.vim", "~/.config/nvim/lua/plugins.lua"})
 -- telescope.vim
-vim.api.nvim_set_keymap('n', '<leader>ll','<cmd>Telescope find_files<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', '<leader>l','<cmd>Telescope find_files<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', '<leader>f','<cmd>Telescope live_grep<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gst','<cmd>Telescope git_status<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gbranch','<cmd>Telescope git_branches<cr>', { silent=true, noremap=true })
