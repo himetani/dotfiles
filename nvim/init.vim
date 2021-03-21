@@ -27,3 +27,7 @@ let mapleader = "\<Space>"
 runtime! settings/*.vim
 lua require('lsp')
 lua require('plugins')
+
+augroup custom-group
+  au QuickfixCmdPost make,grep,grepadd,vimgrep copen
+augroup END
