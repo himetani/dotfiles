@@ -1,7 +1,10 @@
 local lualine = require('lualine')
-lualine.status()
-lualine.options.theme = 'nord'
-lualine.options.icons_enabled = true
+lualine.setup {
+   options = {
+      theme = 'nord',
+      icons_enabled = true
+   }
+}
 
 -- fern.vim
 vim.api.nvim_set_var("fern#renderer", "nerdfont")
