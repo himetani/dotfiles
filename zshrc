@@ -21,9 +21,6 @@ export GIT_EDITOR=vim
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-source $HOME/.cargo/env
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
 # ============================================================================
 # alias
 # ============================================================================
@@ -178,9 +175,6 @@ fi
 #	for f (~/private/*.zsh) source "${f}"
 #fi
 
-# fzf default keybindings and completion
-for f (${FZFPATH}/**/*.zsh) source "${f}"
-
 # git-extras completion
 source ${DOTPATH}/git-extras-completion.zsh
 
@@ -189,6 +183,11 @@ eval "$(direnv hook zsh)"
 # kubectl completion
 source <(kubectl completion zsh)
 
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+/usr/local/opt/fzf/install
+
 # ============================================================================
 # envrc
 # ============================================================================
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
