@@ -184,10 +184,11 @@ eval "$(direnv hook zsh)"
 source <(kubectl completion zsh)
 
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-/usr/local/opt/fzf/install
 
 # ============================================================================
 # envrc
 # ============================================================================
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source $HOME/.cargo/env
+eval "$(starship init zsh)"
