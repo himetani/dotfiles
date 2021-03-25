@@ -9,14 +9,10 @@ export GOPATH=`go env GOPATH`
 export GOBIN="${GOPATH}/bin"
 export PATH="${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${DOTPATH}/bin:${GOBIN}:${PATH}"
 export GO111MODULE=on
-# dircolors
-export LSCOLORS=exgxcxdxbxegedabagacad
 
 export PKG_CONFIG_PATH=$HOME/.pkgconfig
 
 PROMPT="[%n %~] \$vcs_info_msg_0_ %% "
-
-export GIT_EDITOR=vim
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
@@ -29,20 +25,11 @@ alias ls='ls -G'
 alias grep='grep -d skip'
 alias t='vim ~/Documents/inbox.md'
 alias sed='gsed'
-alias tmux="TERM=screen-256color-bce tmux -u"
-alias vimf='vim $(fzf)'
-alias vim='/usr/local/bin/vim'
-#if [ -n $TMUX ]; then
-#   alias vim="TERM=screen-256color vim"
-#fi
-#alias vim="nvim"
 alias gst="git status"
 alias gl="git log"
 alias gb="git branch"
 alias gd="git diff"
 alias dco="docker-compose"
-alias kc="kubectl"
-alias gr="gitlab-runner"
 
 # ============================================================================
 # history
