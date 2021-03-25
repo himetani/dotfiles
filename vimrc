@@ -9,12 +9,7 @@ autocmd VimEnter * execute 'wincmd w'
 nnoremap <C-e> :NERDTreeToggle
 
 Plug 'Yggdroot/indentLine', { 'on': 'IndentLinesEnable' }
-Plug 'altercation/vim-colors-solarized', {'set': 'all'}
 Plug 'itchyny/lightline.vim'
-let g:lightline = {
-    \'colorscheme': 'solarized',
-    \}
-
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 Plug 'majutsushi/tagbar'
 
