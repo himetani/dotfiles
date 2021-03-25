@@ -1,3 +1,8 @@
-[user]
-	name = himetani
-	email = h.s.g.616top@gmail.com
+[core]
+    editor = nvim
+
+[includeIf "gitdir:~/git/private/"]
+    path = ~/git/private/gitconfig
+
+[includeIf "gitdir:~/git/company/"]
+    path = ~/git/company/gitconfig

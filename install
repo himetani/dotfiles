@@ -21,7 +21,7 @@ fi
 
 # brew
 info 'Install homebrew formulae'
-#brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn
+#brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree
 #brew tap homebrew/cask-fonts
 #brew install --cask font-hack-nerd-font iterm2 vivaldi
 #brew install --HEAD neovim
@@ -66,12 +66,18 @@ else
   info '.tigrc is already installed' 
 fi
 
-# private gitcoinfg
-info 'Install private git configuration'
+# gitcoinfg
+info 'Install git configurations'
+if [ ! -h $HOME/.gitconfig ]; then
+    echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/.gitconfig'
+    ln -sn $HOME/git/dotfiles/gitconfig $HOME/.gitconfig
+else
+  info '$HOME/.gitconfig is already installed' 
+fi
 if [ ! -h $HOME/git/private/gitconfig ]; then
     mkdir -p $HOME/git/private
     echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig'
-    ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig
+    ln -sn $HOME/git/dotfiles/gitconfig-private $HOME/git/private/gitconfig
 else
   info '$HOME/git/private/gitconfig is already installed' 
 fi

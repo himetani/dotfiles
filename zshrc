@@ -162,9 +162,6 @@ fi
 #	for f (~/private/*.zsh) source "${f}"
 #fi
 
-# git-extras completion
-source ${DOTPATH}/git-extras-completion.zsh
-
 eval "$(direnv hook zsh)"
 
 # kubectl completion
