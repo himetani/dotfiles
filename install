@@ -14,9 +14,12 @@ if [ ! `builtin command -v brew` ]; then
 fi
 
 # tpm
+info 'Install tpm'
 if [ ! -e $HOME/.tmux/plugins/tpm ]; then
   info 'Install tpm'
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  info 'tpm is already installed' 
 fi
 
 # brew
