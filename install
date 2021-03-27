@@ -22,6 +22,16 @@ else
   info 'tpm is already installed' 
 fi
 
+# monaco nerd fonts
+info 'Install monaco nerd fonts'
+if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
+  info 'Install monaco-nerd-fonts'
+  git clone https://github.com/Karmenzind/monaco-nerd-fonts.git $HOME/git/monaco-nerd-fonts
+  cp $HOME/git/monaco-nerd-fonts/fonts/* $HOME/Library/fonts
+else
+  info 'monaco nerd fonts are already installed' 
+fi
+
 # brew
 info 'Install homebrew formulae'
 brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree
