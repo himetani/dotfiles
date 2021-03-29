@@ -81,3 +81,7 @@ if [ ! -h $HOME/git/private/gitconfig ]; then
 else
   info '$HOME/git/private/gitconfig is already installed' 
 fi
+
+# gopls
+info 'Install gopls' 
+go install golang.org/x/tools/gopls@latest
