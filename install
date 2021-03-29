@@ -14,9 +14,22 @@ if [ ! `builtin command -v brew` ]; then
 fi
 
 # tpm
+info 'Install tpm'
 if [ ! -e $HOME/.tmux/plugins/tpm ]; then
   info 'Install tpm'
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  info 'tpm is already installed' 
+fi
+
+# monaco nerd fonts
+info 'Install monaco nerd fonts'
+if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
+  info 'Install monaco-nerd-fonts'
+  git clone https://github.com/Karmenzind/monaco-nerd-fonts.git $HOME/git/monaco-nerd-fonts
+  cp $HOME/git/monaco-nerd-fonts/fonts/* $HOME/Library/fonts
+else
+  info 'monaco nerd fonts are already installed' 
 fi
 
 # brew
@@ -46,6 +59,15 @@ if [ ! -h $HOME/.tmux.conf ]; then
     ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
 else
   info '.tmux.conf is already installed' 
+fi
+
+# vim-plug
+info 'Install vim-plug'
+if [ ! -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+else
+  info 'vim-plug is already installed' 
 fi
 
 # nvim
