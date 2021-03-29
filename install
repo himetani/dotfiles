@@ -46,8 +46,8 @@ yarn global add bash-language-server
 # zsh
 info 'Install .zshrc'
 if [ ! -h $HOME/.zshrc ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
-    ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
+  echo '=> ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
+  ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
 else
   info '.zshrc is already installed' 
 fi
@@ -55,8 +55,8 @@ fi
 # tmux 
 info 'Install .tmux.conf'
 if [ ! -h $HOME/.tmux.conf ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
-    ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
+  echo '=> ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
+  ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
 else
   info '.tmux.conf is already installed' 
 fi
@@ -65,16 +65,16 @@ fi
 info 'Install vim-plug'
 if [ ! -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-else
-  info 'vim-plug is already installed' 
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    else
+      info 'vim-plug is already installed' 
 fi
 
 # nvim
 info 'Install nvim configurations'
 if [ ! -h $HOME/.config/nvim ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim'
-    ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim
+  echo '=> ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim'
+  ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim
 else
   info 'nvim configurations is already installed' 
 fi
@@ -82,8 +82,8 @@ fi
 # tig
 info 'Install .tigrc'
 if [ ! -h $HOME/.tigrc ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
-    ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
+  echo '=> ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
+  ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
 else
   info '.tigrc is already installed' 
 fi
@@ -91,18 +91,29 @@ fi
 # gitcoinfg
 info 'Install git configurations'
 if [ ! -h $HOME/.gitconfig ]; then
-    echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/.gitconfig'
-    ln -sn $HOME/git/dotfiles/gitconfig $HOME/.gitconfig
+  echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/.gitconfig'
+  ln -sn $HOME/git/dotfiles/gitconfig $HOME/.gitconfig
 else
   info '$HOME/.gitconfig is already installed' 
 fi
 if [ ! -h $HOME/git/private/gitconfig ]; then
-    mkdir -p $HOME/git/private
-    echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig'
-    ln -sn $HOME/git/dotfiles/gitconfig-private $HOME/git/private/gitconfig
+  mkdir -p $HOME/git/private
+  echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig'
+  ln -sn $HOME/git/dotfiles/gitconfig-private $HOME/git/private/gitconfig
 else
   info '$HOME/git/private/gitconfig is already installed' 
 fi
+
+# starship
+info 'Install starship.toml'
+if [ ! -h $HOME/.config/starship.toml ]; then
+  mkdir -p $HOME/.config
+  echo '=> ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml'
+  ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml
+else
+  info 'starship.toml is already installed' 
+fi
+
 
 # gopls
 info 'Install gopls' 
