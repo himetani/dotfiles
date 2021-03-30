@@ -31,4 +31,3 @@ time_format = "%T"
 utc_time_offset = "+9"
 
 [git_branch]
-only_attached = true
