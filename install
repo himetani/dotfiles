@@ -34,7 +34,7 @@ fi
 
 # brew
 info 'Install homebrew formulae'
-brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree
+brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree fd jq
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font iterm2 vivaldi
 brew install --HEAD neovim
