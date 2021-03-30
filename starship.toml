@@ -31,3 +31,9 @@ time_format = "%T"
 utc_time_offset = "+9"
 
 [git_branch]
+only_attached = true
+
+[git_status]
+ahead = "⇡${count}"
+diverged = "⇕⇡${ahead_count}⇣${behind_count}"
+behind = "⇣${count}"
