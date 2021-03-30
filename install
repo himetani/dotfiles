@@ -1,46 +1,120 @@
 #!/bin/sh
 
+function error() {
+  echo -e "[ERROR] " $1
+  exit 1
+}
+
+function info() {
+  echo -e "[INFO] " $1
+}
+
+if [ ! `builtin command -v brew` ]; then
+  error 'Install homebrew before executing this install script.'
+fi
+
+# tpm
+info 'Install tpm'
+if [ ! -e $HOME/.tmux/plugins/tpm ]; then
+  info 'Install tpm'
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+else
+  info 'tpm is already installed' 
+fi
+
+# monaco nerd fonts
+info 'Install monaco nerd fonts'
+if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
+  info 'Install monaco-nerd-fonts'
+  git clone https://github.com/Karmenzind/monaco-nerd-fonts.git $HOME/git/monaco-nerd-fonts
+  cp $HOME/git/monaco-nerd-fonts/fonts/* $HOME/Library/fonts
+else
+  info 'monaco nerd fonts are already installed' 
+fi
+
+# brew
+info 'Install homebrew formulae'
+brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree fd jq
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font iterm2 vivaldi
+brew install --HEAD neovim
+
+# Language server
+info 'Install Language servers'
+yarn global add bash-language-server
+
 # zsh
+info 'Install .zshrc'
 if [ ! -h $HOME/.zshrc ]; then
-    echo 'ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
-    ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
+  echo '=> ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
+  ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
+else
+  info '.zshrc is already installed' 
 fi
 
 # tmux 
+info 'Install .tmux.conf'
 if [ ! -h $HOME/.tmux.conf ]; then
-    echo 'ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
-    ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
+  echo '=> ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
+  ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
+else
+  info '.tmux.conf is already installed' 
 fi
 
-# vim
-if [ ! -h $HOME/.vimrc ]; then
-    echo 'ln -sn $HOME/git/dotfiles/vimrc $HOME/.vimrc'
-    ln -sn $HOME/git/dotfiles/vimrc $HOME/.vimrc
+# vim-plug
+info 'Install vim-plug'
+if [ ! -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    else
+      info 'vim-plug is already installed' 
 fi
 
 # nvim
-if [ ! -h $HOME/.config/nvim/init.vim ]; then
-    echo 'mkdir -p $HOME/.config/nvim'
-    mkdir -p $HOME/.config/nvim
-    echo 'ln -sn $HOME/git/dotfiles/vimrc $HOME/.config/nvim/init.vim'
-    ln -sn $HOME/git/dotfiles/vimrc $HOME/.config/nvim/init.vim
+info 'Install nvim configurations'
+if [ ! -h $HOME/.config/nvim ]; then
+  echo '=> ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim'
+  ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim
+else
+  info 'nvim configurations is already installed' 
 fi
 
 # tig
+info 'Install .tigrc'
 if [ ! -h $HOME/.tigrc ]; then
-    echo 'ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
-    ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
-fi
-
-# peco
-if [ ! -d $HOME/.peco ]; then
-    echo 'ln -sn $HOME/git/dotfiles/peco $HOME/.peco'
-    ln -sn $HOME/git/dotfiles/peco $HOME/.peco
+  echo '=> ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
+  ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
+else
+  info '.tigrc is already installed' 
 fi
 
 # gitcoinfg
-if [ ! -h $HOME/private/gitconfig ]; then
-    mkdir -p $HOME/private
-    echo 'ln -sn $HOME/git/dotfiles/gitconfig $HOME/private/gitconfig'
-    ln -sn $HOME/git/dotfiles/gitconfig $HOME/private/gitconfig
+info 'Install git configurations'
+if [ ! -h $HOME/.gitconfig ]; then
+  echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/.gitconfig'
+  ln -sn $HOME/git/dotfiles/gitconfig $HOME/.gitconfig
+else
+  info '$HOME/.gitconfig is already installed' 
 fi
+if [ ! -h $HOME/git/private/gitconfig ]; then
+  mkdir -p $HOME/git/private
+  echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig'
+  ln -sn $HOME/git/dotfiles/gitconfig-private $HOME/git/private/gitconfig
+else
+  info '$HOME/git/private/gitconfig is already installed' 
+fi
+
+# starship
+info 'Install starship.toml'
+if [ ! -h $HOME/.config/starship.toml ]; then
+  mkdir -p $HOME/.config
+  echo '=> ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml'
+  ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml
+else
+  info 'starship.toml is already installed' 
+fi
+
+
+# gopls
+info 'Install gopls' 
+go install golang.org/x/tools/gopls@latest
