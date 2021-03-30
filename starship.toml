@@ -5,6 +5,30 @@ add_newline = true
 [character]                            # The name of the module we are configuring is "character"
 success_symbol = "[➜](bold green)"     # The "success_symbol" segment is being set to "➜" with the color "bold green"
 
+[[battery.display]]  # バッテリー残量が0％〜30％の間は「太字の赤色」スタイルを利用する
+threshold = 30
+style = "bold red"
+
+[[battery.display]]  # バッテリー残量が30％〜80％の間は「太字の赤色」スタイルを利用する
+threshold = 80
+style = "bold yellow"
+
+[[battery.display]]  # 80％〜100％
+threshold = 100
+style = "bold green"
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
+
+[directory]
+truncation_symbol = ".../"
+
+[time]
+disabled = false
+format = '🕙 [\[ $time \]]($style) '
+time_format = "%T"
+utc_time_offset = "+9"
+
+[git_branch]
+only_attached = true
