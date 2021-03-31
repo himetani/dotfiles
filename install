@@ -13,6 +13,15 @@ if [ ! `builtin command -v brew` ]; then
   error 'Install homebrew before executing this install script.'
 fi
 
+info 'Install nord-iterm2'
+if [ ! -d $HOME/git/nord-iterm2-0.2.0 ]; then
+  curl -L -o $HOME/git/nord-iterm2-0.2.0.zip https://github.com/arcticicestudio/nord-iterm2/archive/refs/tags/v0.2.0.zip
+  unzip -d $HOME/git $HOME/git/nord-iterm2-0.2.0.zip
+  rm $HOME/git/nord-iterm2-0.2.0.zip
+else
+  info 'nord-iterm2 is already installed' 
+fi
+
 # tpm
 info 'Install tpm'
 if [ ! -e $HOME/.tmux/plugins/tpm ]; then
