@@ -43,10 +43,18 @@ fi
 
 # brew
 info 'Install homebrew formulae'
-brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree fd jq
+brew install go tig fzf tmux starship zsh-autosuggestions gsed kubectl direnv htop fontconfig git-extras yarn tree fd jq ctags direnv
 brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font iterm2 vivaldi
+brew install --cask font-hack-nerd-font iterm2 vivaldi docker
 brew install --HEAD neovim
+
+info 'Install fzf'
+if [ ! -e $HOME/.fzf.zsh ]; then
+  info 'Install fzf'
+  $(brew --prefix)/opt/fzf/install
+else
+  info 'fzf is already installed' 
+fi
 
 # Language server
 info 'Install Language servers'

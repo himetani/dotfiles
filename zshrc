@@ -21,7 +21,7 @@ export LANG=en_US.UTF-8
 
 alias ls='ls -G'
 alias grep='grep -d skip'
-alias t='vim ~/Documents/inbox.md'
+alias t='nvim ~/Documents/inbox.md'
 alias sed='gsed'
 alias gst="git status"
 alias gl="git log"
@@ -55,6 +55,10 @@ zstyle ':chpwd:*' recent-dirs-default true
 zstyle ':chpwd:*' recent-dirs-pushd true
 
 setopt no_beep
+
+function _ssh {
+  compadd `fgrep 'Host ' ~/.ssh/config | awk '{print $2}' | sort`;
+}
 
 # ============================================================================
 # bindkey

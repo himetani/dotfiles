@@ -12,11 +12,6 @@ augroup END
 noremap <silent> <Leader>. :call OpenProjectRoot()<CR>
 noremap <silent> <Leader>, :Fern %:h -reveal=% <CR><C-w>=
 
-function!Debug() abort
-  echo expand('%')
-  Fern . -reveal=%
-endfunction
-
 function! OpenProjectRoot() abort
   let git = trim(system('git rev-parse --is-inside-work-tree'))
   if git == 'true'

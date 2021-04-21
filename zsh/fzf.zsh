@@ -23,7 +23,7 @@ function b() {
     | xargs open
   }
 zle -N b 
-bindkey "^B" b
+bindkey "^q" b
 
 function c() {
   local cols sep google_history open
