@@ -58,7 +58,7 @@ fi
 
 # Language server
 info 'Install Language servers'
-yarn global add bash-language-server
+yarn global add bash-language-server typescript typescript-language-server vim-language-server
 
 # zsh
 info 'Install .zshrc'

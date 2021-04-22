@@ -124,6 +124,10 @@ require'lspconfig'.sumneko_lua.setup {
 	},
 }
 
+require'lspconfig'.tsserver.setup {
+   on_attach=custom_on_attach
+}
+
 vim.cmd('augroup lsp')
 vim.cmd('autocmd!')
 vim.cmd("autocmd BufWritePre *.go lua goimports(1000)")
