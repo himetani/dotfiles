@@ -19,6 +19,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'mhinz/vim-startify'
   Plug 'tommcdo/vim-fubitive'
   Plug 'vim-test/vim-test'
+  Plug 'mattn/vim-goimports'
 call plug#end() 
 endif
 

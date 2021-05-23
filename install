@@ -135,3 +135,7 @@ fi
 # gopls
 info 'Install gopls' 
 go install golang.org/x/tools/gopls@latest
+
+# go tools
+info 'Install goimports'
+go install golang.org/x/tools/cmd/goimports@latest
