@@ -23,6 +23,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'kyazdani42/nvim-web-devicons' " devicons plugin for telescope
   Plug 'martinda/Jenkinsfile-vim-syntax'
   Plug 'vim-scripts/groovyindent-unix'
+  Plug 'buoto/gotests-vim'
 call plug#end() 
 endif
 
