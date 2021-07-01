@@ -24,6 +24,8 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'martinda/Jenkinsfile-vim-syntax'
   Plug 'vim-scripts/groovyindent-unix'
   Plug 'buoto/gotests-vim'
+  Plug 'dhruvasagar/vim-table-mode'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 call plug#end() 
 endif
 
