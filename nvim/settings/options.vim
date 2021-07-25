@@ -1,5 +1,5 @@
 "display
-set number
+set number relativenumber
 set ruler
 set showcmd
 set showmode
