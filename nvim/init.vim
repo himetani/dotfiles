@@ -26,6 +26,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'buoto/gotests-vim'
   Plug 'dhruvasagar/vim-table-mode'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 call plug#end() 
 endif
 
@@ -34,6 +35,7 @@ let mapleader = "\<Space>"
 runtime! settings/*.vim
 lua require('lsp')
 lua require('plugins')
+lua require('treesitter')
 
 augroup custom-group
   au QuickfixCmdPost make,grep,grepadd,vimgrep copen
