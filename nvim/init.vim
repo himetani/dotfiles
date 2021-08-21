@@ -36,6 +36,7 @@ runtime! settings/*.vim
 lua require('lsp')
 lua require('plugins')
 lua require('treesitter')
+lua require('telescope')
 
 augroup custom-group
   au QuickfixCmdPost make,grep,grepadd,vimgrep copen
