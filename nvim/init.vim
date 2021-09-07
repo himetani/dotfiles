@@ -27,6 +27,8 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'dhruvasagar/vim-table-mode'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'iberianpig/tig-explorer.vim'
+  Plug 'lambdalisue/gina.vim'
 call plug#end() 
 endif
 
