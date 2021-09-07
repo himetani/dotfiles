@@ -6,7 +6,6 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
-  Plug 'majutsushi/tagbar'
   Plug 'neovim/nvim-lspconfig'
   Plug 'nvim-lua/completion-nvim'
   Plug 'antoinemadec/FixCursorHold.nvim'

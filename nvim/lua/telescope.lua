@@ -48,5 +48,7 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader>l',':lua custom_find_files()<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', '<leader>/',':lua custom_live_grep()<cr>', { silent=true, noremap=true })
-vim.api.nvim_set_keymap('n', '<lealer>gst','<cmd>Telescope git_status<cr>', { silent=true, noremap=true })
-vim.api.nvim_set_keymap('n', '<leader>gb','<cmd>Telescope git_branches<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', '<leader>m','<cmd>Telescope oldfiles<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', '<leader>j','<cmd>Telescope jumplist<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', '<leader><C-p>','<cmd>Telescope command_history<cr>', { silent=true, noremap=true })
+vim.api.nvim_set_keymap('n', '<leader><C-g>','<cmd>Telescope lsp_document_symbols<cr>', { silent=true, noremap=true })

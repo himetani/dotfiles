@@ -16,9 +16,3 @@ vim.api.nvim_set_var("startify_bookmarks", {"~/.config/nvim/init.vim", "~/.confi
 -- vim-fugitive
 vim.api.nvim_set_keymap('n', 'gdiff','<cmd>Gdiffsplit<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gblame','<cmd>Gblame<cr>', { silent=true, noremap=true })
-
--- tommcdo/vim-fubitive
-vim.api.nvim_set_var('fubitive_domain_pattern', 'git.rakuten-it.com')
-
--- tagbar
-vim.api.nvim_set_keymap('n', '<c-g>','<cmd>Tagbar<cr>', { silent=true, noremap=true })
