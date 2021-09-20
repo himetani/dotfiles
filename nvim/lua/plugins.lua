@@ -16,3 +16,6 @@ vim.api.nvim_set_var("startify_bookmarks", {"~/.config/nvim/init.vim", "~/.confi
 -- vim-fugitive
 vim.api.nvim_set_keymap('n', 'gdiff','<cmd>Gdiffsplit<cr>', { silent=true, noremap=true })
 vim.api.nvim_set_keymap('n', 'gblame','<cmd>Gblame<cr>', { silent=true, noremap=true })
+
+-- nvim-colorizer.lua
+require'colorizer'.setup()

@@ -28,6 +28,10 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'iberianpig/tig-explorer.vim'
   Plug 'lambdalisue/gina.vim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'TimUntersberger/neogit'
+  Plug 'sindrets/diffview.nvim'
+  Plug 'norcalli/nvim-colorizer.lua'
 call plug#end() 
 endif
 
@@ -38,6 +42,11 @@ lua require('lsp')
 lua require('plugins')
 lua require('treesitter')
 lua require('telescope')
+lua require('ng')
+
+"lua << EOF
+"require("neogit").setup {}
+"EOF
 
 augroup custom-group
   au QuickfixCmdPost make,grep,grepadd,vimgrep copen
