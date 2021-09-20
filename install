@@ -61,7 +61,10 @@ brew install go \
   jq \
   ctags \
   direnv \
-  ripgrep
+  ripgrep \
+  ninja \
+  nkf \
+  git
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font iterm2 vivaldi docker
@@ -158,3 +161,15 @@ go install golang.org/x/tools/gopls@latest
 # go tools
 info 'Install goimports'
 go install golang.org/x/tools/cmd/goimports@latest
+
+# Lua Langualge Server
+if [ ! -d $HOME/git/lua-language-server ]; then
+  git clone https://github.com/sumneko/lua-language-server $HOME/git/lua-language-server
+  cd $HOME/git/lua-language-server
+  git submodule update --init --recursive
+
+  cd 3rd/luamake
+  compile/install.sh
+  cd ../..
+  ./3rd/luamake/luamake rebuild
+fi
