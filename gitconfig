@@ -6,3 +6,6 @@
 
 [includeIf "gitdir:~/git/company/"]
     path = ~/git/company/gitconfig
+[user]
+	name = himetani
+	email = h.s.g.616top@gmail.com
