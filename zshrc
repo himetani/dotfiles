@@ -92,3 +92,7 @@ eval "$(starship init zsh)"
 
 for f ($HOME/git/dotfiles/zsh/*.zsh) source "${f}"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+alias luamake=/Users/takafumi.tsukamoto/git/lua-language-server/3rd/luamake/luamake
+
+export PATH="$HOME/.poetry/bin:$PATH"
