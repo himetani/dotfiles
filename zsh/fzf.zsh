@@ -7,7 +7,7 @@ function fzf-cdr () {
   zle clear-screen
 }
 zle -N fzf-cdr
-bindkey "^H" fzf-cdr
+bindkey "^K" fzf-cdr
 
 function b() {
   bookmarks_path=~/Library/Application\ Support/Vivaldi/Default/Bookmarks
