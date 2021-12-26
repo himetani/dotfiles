@@ -32,6 +32,8 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'TimUntersberger/neogit'
   Plug 'sindrets/diffview.nvim'
   Plug 'norcalli/nvim-colorizer.lua'
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
 call plug#end() 
 endif
 
