@@ -64,7 +64,8 @@ brew install go \
   ripgrep \
   ninja \
   nkf \
-  git
+  git \
+  alacritty
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font iterm2 vivaldi docker
@@ -172,4 +173,13 @@ if [ ! -d $HOME/git/lua-language-server ]; then
   compile/install.sh
   cd ../..
   ./3rd/luamake/luamake rebuild
+fi
+
+# Alacritty
+info 'Install Alacritty configurations'
+if [ ! -h $HOME/.alacritty.yml ]; then
+  echo '=> ln -sn $HOME/git/dotfiles/alacritty.yml $HOME/.alacritty.yml'
+  ln -sn $HOME/git/dotfiles/alacritty.yml $HOME/.alacritty.yml
+else
+  info 'Alacritty configurations is already installed' 
 fi
