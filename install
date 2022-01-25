@@ -69,7 +69,8 @@ brew install go \
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font iterm2 vivaldi docker
-brew install --HEAD neovim
+# brew install --HEAD neovim
+brew install neovim
 
 info 'Install fzf'
 if [ ! -e $HOME/.fzf.zsh ]; then
