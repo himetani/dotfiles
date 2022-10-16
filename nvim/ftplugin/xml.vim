@@ -3,3 +3,5 @@ function XMLFormat()
   %s/></>\r</g
   normal gg=G
 endfunction
+
+setl expandtab shiftwidth=2 tabstop=2

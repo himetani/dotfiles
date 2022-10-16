@@ -32,6 +32,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'norcalli/nvim-colorizer.lua'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'jjo/vim-cue'
 call plug#end() 
 endif
 
