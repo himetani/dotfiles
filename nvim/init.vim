@@ -7,7 +7,6 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
   Plug 'antoinemadec/FixCursorHold.nvim'
   Plug 'lambdalisue/fern.vim'
   Plug 'lambdalisue/nerdfont.vim'
@@ -37,6 +36,9 @@ call plug#end()
 endif
 
 let mapleader = "\<Space>"
+
+set termguicolors
+colorscheme nord
 
 runtime! settings/*.vim
 lua require('lsp')
