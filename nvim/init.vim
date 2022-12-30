@@ -33,6 +33,7 @@ silent! if plug#begin('~/.local/share/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'jjo/vim-cue'
+  Plug 'tibabit/vim-templates'
 call plug#end() 
 endif
 
