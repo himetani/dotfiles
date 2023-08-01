@@ -102,15 +102,6 @@ else
   info '.tmux.conf is already installed' 
 fi
 
-# vim-plug
-info 'Install vim-plug'
-if [ ! -e $HOME/.local/share/nvim/site/autoload/plug.vim ]; then
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    else
-      info 'vim-plug is already installed' 
-fi
-
 # nvim
 info 'Install nvim configurations'
 if [ ! -h $HOME/.config/nvim ]; then
