@@ -68,7 +68,7 @@ brew install go \
   alacritty
 
 brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font iterm2 vivaldi docker
+brew install --cask font-hack-nerd-font iterm2 vivaldi
 # brew install --HEAD neovim
 brew install neovim
 
