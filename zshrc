@@ -5,9 +5,9 @@
 export DOTPATH=$HOME/git/dotfiles
 export EDITOR="nvim"
 export FZFPATH=$HOME/.fzf
-export GOPATH=`go env GOPATH`
 export GOBIN="${GOPATH}/bin"
 export PATH="/opt/homebrew/bin:${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${DOTPATH}/bin:${GOBIN}:${PATH}"
+export GOPATH=`go env GOPATH`
 export GO111MODULE=on
 
 export PKG_CONFIG_PATH=$HOME/.pkgconfig
