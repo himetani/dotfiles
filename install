@@ -169,9 +169,9 @@ fi
 
 # Alacritty
 info 'Install Alacritty configurations'
-if [ ! -h $HOME/.alacritty.yml ]; then
-  echo '=> ln -sn $HOME/git/dotfiles/alacritty.yml $HOME/.alacritty.yml'
-  ln -sn $HOME/git/dotfiles/alacritty.yml $HOME/.alacritty.yml
+if [ ! -h $HOME/.alacritty.toml ]; then
+  echo '=> ln -sn $HOME/git/dotfiles/alacritty.toml $HOME/.alacritty.toml'
+  ln -sn $HOME/git/dotfiles/alacritty.toml $HOME/.alacritty.toml
 else
   info 'Alacritty configurations is already installed' 
 fi
