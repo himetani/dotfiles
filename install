@@ -137,6 +137,15 @@ else
   info 'starship.toml is already installed' 
 fi
 
+# starship
+info 'Install taplo.toml'
+if [ ! -h $HOME/.taplo.toml ]; then
+  echo '=> ln -sn $HOME/git/dotfiles/taplo.toml $HOME/.taplo.toml'
+  ln -sn $HOME/git/dotfiles/taplo.toml $HOME/.taplo.toml
+else
+  info 'taplo.toml is already installed' 
+fi
+
 
 # gopls
 info 'Install gopls' 
