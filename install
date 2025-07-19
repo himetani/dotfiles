@@ -56,12 +56,12 @@ brew install go \
   ninja \
   nkf \
   git \
-  alacritty
+  alacritty \
+  docker \
+  colima \
+  neovim
 
-brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
-# brew install --HEAD neovim
-brew install neovim
 
 info 'Install fzf'
 if [ ! -e $HOME/.fzf.zsh ]; then
