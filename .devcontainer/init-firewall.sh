@@ -50,15 +50,21 @@ while read -r cidr; do
   ipset add allowed-domains "$cidr"
 done < <(echo "$gh_ranges" | jq -r '(.web + .api + .git)[]' | aggregate -q)
 
-# Resolve and add other allowed domains
-for domain in \
-  "registry.npmjs.org" \
-  "api.anthropic.com" \
-  "sentry.io" \
-  "statsig.anthropic.com" \
-  "statsig.com" \
-  "mise-versions.jdx.dev" \
-  "pypi.org"; do
+# Resolve and add other allowed domains from configuration file
+DOMAINS_FILE="/workspace/.devcontainer/allowed-domains.txt"
+
+if [ ! -f "$DOMAINS_FILE" ]; then
+  echo "ERROR: Domains configuration file not found at $DOMAINS_FILE"
+  exit 1
+fi
+
+while IFS= read -r domain || [ -n "$domain" ]; do
+  # Skip empty lines and comments
+  if [[ -z "$domain" ]] || [[ "$domain" =~ ^[[:space:]]*# ]]; then
+    continue
+  fi
+  # Remove leading/trailing whitespace
+  domain=$(echo "$domain" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
   echo "Resolving $domain..."
   ips=$(dig +short A "$domain")
   if [ -z "$ips" ]; then
@@ -74,7 +80,7 @@ for domain in \
     echo "Adding $ip for $domain"
     ipset add allowed-domains "$ip"
   done < <(echo "$ips")
-done
+done < "$DOMAINS_FILE"
 
 # Get host IP from default route
 HOST_IP=$(ip route | grep default | cut -d" " -f3)

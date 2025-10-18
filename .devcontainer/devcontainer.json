@@ -65,5 +65,5 @@
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "git config --global --add safe.directory /workspace && sudo /usr/local/bin/init-firewall.sh && bash -lc 'mise trust -a && mise install -y' && echo 'eval \"$(mise activate zsh)\"' >> ~/.zshrc"
+  "postCreateCommand": ".devcontainer/post-create.sh"
 }
