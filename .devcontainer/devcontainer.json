@@ -9,12 +9,12 @@
       "ZSH_IN_DOCKER_VERSION": "1.2.0"
     }
   },
-  "initializeCommand": "bash -lc 'mkdir -p .devcontainer && echo HOST_UID=$(id -u) > .devcontainer/envfile && echo HOST_GID=$(id -g) >> .devcontainer/envfile' && echo GH_TOKEN=${GH_TOKEN} >> .devcontainer/envfile && mkdir -p ${HOME}/devcontainer/$(basename $(pwd))",
+  "initializeCommand": ".devcontainer/init.sh",
   "runArgs": [
-    "--cap-add=NET_ADMIN",
-    "--cap-add=NET_RAW",
     "--env-file",
-    "${localWorkspaceFolder}/.devcontainer/envfile"
+    "${localWorkspaceFolder}/.devcontainer/envfile",
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW"
   ],
   "customizations": {
     "vscode": {
