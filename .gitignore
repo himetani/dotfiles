@@ -1,3 +1,7 @@
 .DS_Store
 
 nvim/lazy-lock.json
+nvim/lazyvim.json
+
+.devcontainer/envfile
+.mise.toml

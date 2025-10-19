@@ -1,0 +1,19 @@
+# Allowed domains for firewall configuration
+# One domain per line, comments start with #
+
+# NPM registry
+registry.npmjs.org
+
+# Anthropic services
+api.anthropic.com
+
+# Monitoring and analytics
+sentry.io
+statsig.anthropic.com
+statsig.com
+
+# Development tools
+mise-versions.jdx.dev
+
+# Python package index
+pypi.org
