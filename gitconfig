@@ -3,6 +3,7 @@
 
 [includeIf "gitdir:~/git/private/"]
     path = ~/git/private/gitconfig
+    path = ~/git/private/gitconfig_local
 
 [includeIf "gitdir:~/git/company/"]
     path = ~/git/company/gitconfig
