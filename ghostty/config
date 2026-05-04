@@ -1,4 +1,6 @@
 theme = Catppuccin Frappe 
-font-family = JetBrains Mono
-font-family = Noto Sans JP
+font-family = JetBrainsMono Nerd Font Mono
+font-family = Noto Sans Mono CJK JP
+
 font-size = 12
+font-feature = -dlig,-liga,-calt
