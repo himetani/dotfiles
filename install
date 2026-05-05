@@ -13,15 +13,6 @@ if [ ! `builtin command -v brew` ]; then
   error 'Install homebrew before executing this install script.'
 fi
 
-# tpm
-info 'Install tpm'
-if [ ! -e $HOME/.tmux/plugins/tpm ]; then
-  info 'Install tpm'
-  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-else
-  info 'tpm is already installed' 
-fi
-
 # monaco nerd fonts
 info 'Install monaco nerd fonts'
 if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
@@ -82,15 +73,6 @@ if [ ! -h $HOME/.zshrc ]; then
   ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
 else
   info '.zshrc is already installed' 
-fi
-
-# tmux 
-info 'Install .tmux.conf'
-if [ ! -h $HOME/.tmux.conf ]; then
-  echo '=> ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf'
-  ln -sn $HOME/git/dotfiles/tmux.conf $HOME/.tmux.conf
-else
-  info '.tmux.conf is already installed' 
 fi
 
 # nvim
