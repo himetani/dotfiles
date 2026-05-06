@@ -6,6 +6,7 @@
   # Shell
   starship
   zsh-autosuggestions
+  direnv
   fzf
 
   # CLI tools
