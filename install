@@ -9,10 +9,6 @@ function info() {
   echo -e "[INFO] " $1
 }
 
-if [ ! `builtin command -v brew` ]; then
-  error 'Install homebrew before executing this install script.'
-fi
-
 # monaco nerd fonts
 info 'Install monaco nerd fonts'
 if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
@@ -20,51 +16,8 @@ if [ ! -d $HOME/git/monaco-nerd-fonts ]; then
   git clone https://github.com/Karmenzind/monaco-nerd-fonts.git $HOME/git/monaco-nerd-fonts
   cp $HOME/git/monaco-nerd-fonts/fonts/* $HOME/Library/fonts
 else
-  info 'monaco nerd fonts are already installed' 
+  info 'monaco nerd fonts are already installed'
 fi
-
-# brew
-info 'Install homebrew formulae'
-brew install go \
-  tig \
-  fzf \
-  tmux \
-  starship \
-  zsh-autosuggestions \
-  gsed \
-  kubectl \
-  direnv \
-  htop \
-  fontconfig \
-  git-extras \
-  yarn \
-  tree \
-  fd \
-  jq \
-  ctags \
-  direnv \
-  ripgrep \
-  ninja \
-  nkf \
-  git \
-  alacritty \
-  docker \
-  colima \
-  neovim
-
-brew install --cask font-hack-nerd-font
-
-info 'Install fzf'
-if [ ! -e $HOME/.fzf.zsh ]; then
-  info 'Install fzf'
-  $(brew --prefix)/opt/fzf/install
-else
-  info 'fzf is already installed' 
-fi
-
-# Language server
-info 'Install Language servers'
-yarn global add bash-language-server typescript typescript-language-server vim-language-server
 
 # zsh
 info 'Install .zshrc'
@@ -72,7 +25,7 @@ if [ ! -h $HOME/.zshrc ]; then
   echo '=> ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc'
   ln -sn $HOME/git/dotfiles/zshrc $HOME/.zshrc
 else
-  info '.zshrc is already installed' 
+  info '.zshrc is already installed'
 fi
 
 # nvim
@@ -81,7 +34,7 @@ if [ ! -h $HOME/.config/nvim ]; then
   echo '=> ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim'
   ln -sn $HOME/git/dotfiles/nvim $HOME/.config/nvim
 else
-  info 'nvim configurations is already installed' 
+  info 'nvim configurations is already installed'
 fi
 
 # tig
@@ -90,63 +43,32 @@ if [ ! -h $HOME/.tigrc ]; then
   echo '=> ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc'
   ln -sn $HOME/git/dotfiles/tigrc $HOME/.tigrc
 else
-  info '.tigrc is already installed' 
+  info '.tigrc is already installed'
 fi
 
-# gitcoinfg
+# gitconfig
 info 'Install git configurations'
 if [ ! -h $HOME/.gitconfig ]; then
   echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/.gitconfig'
   ln -sn $HOME/git/dotfiles/gitconfig $HOME/.gitconfig
 else
-  info '$HOME/.gitconfig is already installed' 
+  info '$HOME/.gitconfig is already installed'
 fi
 if [ ! -h $HOME/git/private/gitconfig ]; then
   mkdir -p $HOME/git/private
   echo '=> ln -sn $HOME/git/dotfiles/gitconfig $HOME/git/private/gitconfig'
   ln -sn $HOME/git/dotfiles/gitconfig-private $HOME/git/private/gitconfig
 else
-  info '$HOME/git/private/gitconfig is already installed' 
+  info '$HOME/git/private/gitconfig is already installed'
 fi
 
-# starship
-info 'Install starship.toml'
-if [ ! -h $HOME/.config/starship.toml ]; then
-  mkdir -p $HOME/.config
-  echo '=> ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml'
-  ln -sn $HOME/git/dotfiles/starship.toml $HOME/.config/starship.toml
-else
-  info 'starship.toml is already installed' 
-fi
-
-# starship
+# taplo
 info 'Install taplo.toml'
 if [ ! -h $HOME/.taplo.toml ]; then
   echo '=> ln -sn $HOME/git/dotfiles/taplo.toml $HOME/.taplo.toml'
   ln -sn $HOME/git/dotfiles/taplo.toml $HOME/.taplo.toml
 else
-  info 'taplo.toml is already installed' 
-fi
-
-
-# gopls
-info 'Install gopls' 
-go install golang.org/x/tools/gopls@latest
-
-# go tools
-info 'Install goimports'
-go install golang.org/x/tools/cmd/goimports@latest
-
-# Lua Langualge Server
-if [ ! -d $HOME/git/lua-language-server ]; then
-  git clone https://github.com/sumneko/lua-language-server $HOME/git/lua-language-server
-  cd $HOME/git/lua-language-server
-  git submodule update --init --recursive
-
-  cd 3rd/luamake
-  compile/install.sh
-  cd ../..
-  ./3rd/luamake/luamake rebuild
+  info 'taplo.toml is already installed'
 fi
 
 # Alacritty
@@ -155,5 +77,5 @@ if [ ! -h $HOME/.alacritty.toml ]; then
   echo '=> ln -sn $HOME/git/dotfiles/alacritty.toml $HOME/.alacritty.toml'
   ln -sn $HOME/git/dotfiles/alacritty.toml $HOME/.alacritty.toml
 else
-  info 'Alacritty configurations is already installed' 
+  info 'Alacritty configurations is already installed'
 fi
