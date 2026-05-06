@@ -12,7 +12,15 @@
 
     plugins = with pkgs.tmuxPlugins; [
       {
-        plugin = catppuccin;
+        plugin = catppuccin.overrideAttrs (_: {
+          version = "2.3.0";
+          src = pkgs.fetchFromGitHub {
+            owner = "catppuccin";
+            repo = "tmux";
+            rev = "v2.3.0";
+            sha256 = "11qivjsnd7xr2hzjc8rb69fwcxl88qrhd2zkxq6x1w0j510528nw";
+          };
+        });
         extraConfig = ''
           set -g @catppuccin_flavor "frappe"
           set -g @catppuccin_window_status_style "rounded"
@@ -68,7 +76,7 @@
       bind-key x kill-pane
 
       # Reload configuration
-      bind-key C-r source-file ~/.tmux.conf \; display "Reloaded!"
+      bind-key C-r source-file ~/.config/tmux/tmux.conf \; display "Reloaded!"
 
       # Toggle status bar
       bind-key G set status
