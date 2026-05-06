@@ -85,9 +85,10 @@ eval "$(direnv hook zsh)"
 # kubectl completion
 source <(kubectl completion zsh)
 
-source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.nix-profile/share/fzf/completion.zsh
+source ~/.nix-profile/share/fzf/key-bindings.zsh
 eval "$(starship init zsh)"
 
 for f ($HOME/git/dotfiles/zsh/*.zsh) source "${f}"
