@@ -4,3 +4,5 @@ font-family = Noto Sans Mono CJK JP
 
 font-size = 12
 font-feature = -dlig,-liga,-calt
+
+macos-option-as-alt = true
