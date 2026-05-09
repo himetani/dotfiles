@@ -6,7 +6,7 @@ export DOTPATH=$HOME/git/dotfiles
 export EDITOR="nvim"
 export FZFPATH=$HOME/.fzf
 export GOBIN="${GOPATH}/bin"
-export PATH="${HOME}/.nix-profile/bin:/opt/homebrew/bin:${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${DOTPATH}/bin:${GOBIN}:${PATH}"
+export PATH="${HOME}/.nix-profile/bin:/opt/homebrew/bin:${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${GOBIN}:${PATH}"
 export GOPATH=`go env GOPATH`
 export GO111MODULE=on
 
@@ -91,7 +91,7 @@ source ~/.nix-profile/share/fzf/completion.zsh
 source ~/.nix-profile/share/fzf/key-bindings.zsh
 eval "$(starship init zsh)"
 
-for f ($HOME/git/dotfiles/zsh/*.zsh) source "${f}"
+for f ($HOME/.zsh/*.zsh) source "${f}"
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 alias luamake=/Users/takafumi.tsukamoto/git/lua-language-server/3rd/luamake/luamake

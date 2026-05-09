@@ -25,6 +25,9 @@
   xdg.configFile."nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/nvim";
 
+  home.file.".zsh/fzf.zsh".source =
+    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/zsh/fzf.zsh";
+
   xdg.configFile."ghostty/config".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/ghostty/config";
 
