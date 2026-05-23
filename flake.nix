@@ -10,7 +10,13 @@
   outputs = { nixpkgs, home-manager, ... }: {
     homeConfigurations = {
       "tsukamoto" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config.allowUnfreePredicate = pkg:
+            builtins.elem (nixpkgs.lib.getName pkg) [
+              "1password-cli"
+            ];
+        };
         modules = [ ./nix/home.nix ];
       };
     };
