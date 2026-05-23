@@ -22,6 +22,7 @@
   gnused
   ninja
   kubectl
+  _1password-cli
 
   # Editor
   neovim
