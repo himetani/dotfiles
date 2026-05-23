@@ -10,6 +10,7 @@
   fzf
 
   # CLI tools
+  mise
   git
   git-extras
   tig
