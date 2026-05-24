@@ -23,6 +23,7 @@
   gnused
   ninja
   kubectl
+  ngrok
   _1password-cli
 
   # Editor
