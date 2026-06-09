@@ -13,6 +13,7 @@
   mise
   git
   git-extras
+  gh
   tig
   htop
   tree
@@ -23,7 +24,6 @@
   gnused
   ninja
   kubectl
-  ngrok
   _1password-cli
 
   # Editor

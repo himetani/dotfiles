@@ -1,8 +1,8 @@
-{ pkgs, config, ... }:
+{ pkgs, config, username, ... }:
 {
   imports = [ ./tmux.nix ];
-  home.username = "tsukamoto";
-  home.homeDirectory = "/Users/tsukamoto";
+  home.username = username;
+  home.homeDirectory = "/Users/${username}";
   home.stateVersion = "24.05";
 
   home.packages = import ./packages.nix { inherit pkgs; };
@@ -15,9 +15,6 @@
 
   home.file.".gitconfig".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/gitconfig";
-
-  home.file."git/private/gitconfig".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/gitconfig-private";
 
   home.file.".taplo.toml".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/git/dotfiles/taplo.toml";
