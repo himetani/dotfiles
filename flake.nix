@@ -7,19 +7,25 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
-    homeConfigurations = {
-      "tsukamoto" = home-manager.lib.homeManagerConfiguration {
+  outputs = { nixpkgs, home-manager, ... }:
+    let
+      mkHome = username: home-manager.lib.homeManagerConfiguration {
         pkgs = import nixpkgs {
           system = "aarch64-darwin";
           config.allowUnfreePredicate = pkg:
             builtins.elem (nixpkgs.lib.getName pkg) [
               "1password-cli"
-              "ngrok"
             ];
         };
+        extraSpecialArgs = { inherit username; };
         modules = [ ./nix/home.nix ];
       };
+    in {
+      homeConfigurations = {
+        # private machine
+        "tsukamoto" = mkHome "tsukamoto";
+        # work machine
+        "ttsukamoto" = mkHome "ttsukamoto";
+      };
     };
-  };
 }

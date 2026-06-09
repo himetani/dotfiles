@@ -1,11 +1,9 @@
 [core]
     editor = nvim
 
-[includeIf "gitdir:~/git/private/"]
-    path = ~/git/private/gitconfig
-    path = ~/git/private/gitconfig_local
+[user]
+    name = himetani
+    email = 8338435+himetani@users.noreply.github.com
 
-[includeIf "gitdir:~/git/company/"]
-    path = ~/git/company/gitconfig
 [init]
 	defaultBranch = main
