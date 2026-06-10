@@ -24,6 +24,7 @@
   gnused
   ninja
   kubectl
+  databricks-cli
   _1password-cli
 
   # Editor
