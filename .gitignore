@@ -3,5 +3,5 @@
 nvim/lazy-lock.json
 nvim/lazyvim.json
 
-.devcontainer/envfile
+.devcontainer
 .mise.toml
