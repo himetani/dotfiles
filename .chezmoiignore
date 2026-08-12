@@ -1,0 +1,16 @@
+.DS_Store
+.claude/
+.devcontainer/
+.dockerignore
+.git/
+.gitignore
+.mise.toml
+AGENTS.md
+Brewfile
+CLAUDE.md
+README.md
+ghostty/
+nix/
+nvim/
+scripts/
+zsh/

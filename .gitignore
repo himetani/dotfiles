@@ -2,6 +2,8 @@
 
 nvim/lazy-lock.json
 nvim/lazyvim.json
+dot_config/nvim/lazy-lock.json
+dot_config/nvim/lazyvim.json
 
 .devcontainer
 .mise.toml

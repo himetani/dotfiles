@@ -6,7 +6,7 @@ export DOTPATH=$HOME/git/dotfiles
 export EDITOR="nvim"
 export FZFPATH=$HOME/.fzf
 export GOBIN="${GOPATH}/bin"
-export PATH="${HOME}/.nix-profile/bin:/opt/homebrew/bin:${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${GOBIN}:${PATH}"
+export PATH="/opt/homebrew/bin:${HOME}/.private/bin:${HOME}/company/bin:/usr/local/bin:${FZFPATH}/bin:${GOBIN}:${PATH}"
 export GOPATH=`go env GOPATH`
 export GO111MODULE=on
 
@@ -85,10 +85,12 @@ eval "$(direnv hook zsh)"
 # kubectl completion
 source <(kubectl completion zsh)
 
-source ~/.nix-profile/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-source ~/.nix-profile/share/fzf/completion.zsh
-source ~/.nix-profile/share/fzf/key-bindings.zsh
+if (( $+commands[brew] )); then
+  BREW_PREFIX="$(brew --prefix)"
+  source "${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
+  source "${BREW_PREFIX}/opt/fzf/shell/completion.zsh"
+  source "${BREW_PREFIX}/opt/fzf/shell/key-bindings.zsh"
+fi
 eval "$(starship init zsh)"
 
 for f ($HOME/.zsh/*.zsh) source "${f}"
