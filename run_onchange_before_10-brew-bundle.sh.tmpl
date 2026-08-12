@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -eu
+
+if [ "$(uname -s)" != "Darwin" ]; then
+  echo "Skipping Homebrew packages: this dotfiles repository supports macOS only."
+  exit 0
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+  echo "Homebrew is required. Install it before running chezmoi apply." >&2
+  exit 1
+fi
+
+brew bundle --file="{{ .chezmoi.sourceDir }}/Brewfile"
