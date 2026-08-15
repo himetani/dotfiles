@@ -79,9 +79,6 @@ fi
 
 eval "$(direnv hook zsh)"
 
-# kubectl completion
-source <(kubectl completion zsh)
-
 if (( $+commands[brew] )); then
   BREW_PREFIX="$(brew --prefix)"
   source "${BREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
