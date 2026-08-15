@@ -68,6 +68,34 @@ To add or remove a package, edit `Brewfile`. To change tmux plugins, edit the
 `@plugin` lines in `dot_config/tmux/tmux.conf`. The corresponding run scripts are
 re-executed only when their input files change.
 
+## Keeping Homebrew current
+
+Homebrew is a rolling release and
+[deliberately has no lockfile](https://docs.brew.sh/Brew-Bundle-and-Brewfile), so
+the `Brewfile` cannot pin versions and there is no version state for chezmoi to
+apply. Staying current is only a matter of running `brew upgrade` often enough.
+
+`chezmoi apply` therefore offers to run it, at most once a week:
+
+```
+Homebrew was last upgraded 9 days ago. Upgrade now? [y/N]
+```
+
+Declining postpones the question rather than dismissing it, so the prompt does
+not reappear on every apply. The interval is `INTERVAL_DAYS` in
+`run_after_30-brew-upgrade.sh`, and the last answer is recorded in
+`~/.local/state/chezmoi/brew-upgrade-last`. The prompt is skipped when chezmoi
+runs without a terminal.
+
+Pulling and applying in one step, which is where this prompt usually appears:
+
+```sh
+chezmoi update
+```
+
+Upgrading by hand at any other time is fine and needs no coordination: there is
+no central version state to drift from.
+
 ## Verification
 
 ```sh
