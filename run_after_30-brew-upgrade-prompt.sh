@@ -56,9 +56,17 @@ date +%s > "$state_file"
 
 case "$answer" in
   [yY] | [yY][eE][sS])
-    brew update
-    brew upgrade
-    brew cleanup
+    # brew lists what it is about to change and asks for its own confirmation.
+    # Read it from the terminal this script already opened so that the question
+    # still works when apply was invoked with stdin redirected.
+    #
+    # Cancelling that confirmation is an ordinary answer, not a failure. Without
+    # this, Ctrl-C there ends the apply with "exit status 1" even though nothing
+    # went wrong. The answer above is already recorded, so declining here does
+    # not turn into a prompt loop either.
+    brew update < /dev/tty || true
+    brew upgrade < /dev/tty ||
+      echo "Upgrade cancelled or incomplete. Run brew upgrade by hand to retry."
     ;;
   *)
     echo "Skipped. Will ask again in $INTERVAL_DAYS days."
