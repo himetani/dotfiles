@@ -81,6 +81,10 @@ apply. Staying current is only a matter of running `brew upgrade` often enough.
 Homebrew was last upgraded 9 days ago. Upgrade now? [y/N]
 ```
 
+Answering yes hands the terminal to `brew`, which lists what it is about to
+change and asks for its own confirmation, so nothing is upgraded without being
+shown first. An upgrade that fails or is declined there does not fail the apply.
+
 Declining postpones the question rather than dismissing it, so the prompt does
 not reappear on every apply. The interval is `INTERVAL_DAYS` in
 `run_after_30-brew-upgrade-prompt.sh`, and the last answer is recorded in
