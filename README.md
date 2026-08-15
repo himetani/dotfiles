@@ -141,9 +141,11 @@ underneath it.
 chezmoi update
 ```
 
-Updating plugins locally with `:Lazy update` works but drifts from the lockfile,
-and the next apply restores the file without moving the plugins back. Run
-`:Lazy restore` to return to the locked revisions.
+lazy.nvim's own update checker is off, so Neovim never reports that plugins are
+out of date: that is the workflow's job, and a second way to update would only
+produce changes nothing records. Updating locally with `:Lazy update` still
+works but drifts from the lockfile, and the next apply restores the file without
+moving the plugins back. Run `:Lazy restore` to return to the locked revisions.
 
 The workflow can also be started by hand from the Actions tab, which is the way
 to pick up an update without waiting for Monday.
