@@ -31,7 +31,7 @@ Install Homebrew first, then set up chezmoi and this repository.
 
 ```sh
 brew install chezmoi
-git clone git@github.com:himetani/dotfiles.git "$HOME/git/dotfiles"
+git clone https://github.com/himetani/dotfiles.git "$HOME/git/dotfiles"
 chezmoi init --source="$HOME/git/dotfiles"
 chezmoi diff
 chezmoi apply
@@ -45,6 +45,10 @@ chezmoi apply
 
 If the repository is already cloned, run only the steps from `brew install chezmoi`
 onwards.
+
+Cloning over HTTPS needs no credentials because the repository is public.
+Pushing does, and `gh auth login` is enough — it registers a git credential
+helper, so no token has to be written into the remote URL.
 
 ## Routine maintenance
 
