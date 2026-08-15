@@ -5,20 +5,31 @@ name: Update lazy-lock.json
 # Runs on macOS because the point is to verify the configuration on the system
 # it is actually used on; the lockfile itself holds git revisions and is not
 # platform specific.
+#
+# Two jobs, because "Lazy! sync" fetches and runs code from every upstream
+# plugin repository. That job therefore gets a read-only token and hands the
+# lockfile over as an artifact; only the second job, which runs nothing but git
+# and gh, holds a token that can write to this repository. A compromised plugin
+# can then at worst put bad revisions into a pull request, which is what the
+# review before merging is for.
 
 on:
   schedule:
     - cron: "0 21 * * 0" # Sundays 21:00 UTC, which is Mondays 06:00 JST
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pull-requests: write
+permissions: {}
 
 jobs:
-  update:
+  sync:
     runs-on: macos-latest
     timeout-minutes: 30
+
+    permissions:
+      contents: read
+
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
 
     steps:
       - uses: actions/checkout@v4
@@ -42,12 +53,54 @@ jobs:
       - name: Copy the lockfile back
         run: cp "$HOME/.config/nvim/lazy-lock.json" dot_config/nvim/lazy-lock.json
 
+      - name: Check for updates
+        id: diff
+        run: |
+          set -eu
+          if git diff --quiet dot_config/nvim/lazy-lock.json; then
+            echo "No plugin updates."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Upload the lockfile
+        if: steps.diff.outputs.changed == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: lazy-lock
+          path: dot_config/nvim/lazy-lock.json
+          retention-days: 1
+
+  pull-request:
+    needs: sync
+    if: needs.sync.outputs.changed == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download the lockfile
+        uses: actions/download-artifact@v4
+        with:
+          name: lazy-lock
+          path: /tmp/lazy-lock
+
       - name: Open a pull request
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -eu
 
+          cp /tmp/lazy-lock/lazy-lock.json dot_config/nvim/lazy-lock.json
+
+          # The sync job already answered this, but it decided against its own
+          # checkout; main may have moved on since.
           if git diff --quiet dot_config/nvim/lazy-lock.json; then
             echo "No plugin updates."
             exit 0
