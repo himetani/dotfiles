@@ -1,7 +1,6 @@
 .DS_Store
 .claude/
 .devcontainer/
-.dockerignore
 .git/
 .gitignore
 .mise.toml
