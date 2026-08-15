@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# Move the installed plugins to the revisions in lazy-lock.json.
+#
+# Applying the lockfile only writes the file. lazy.nvim installs plugins that
+# are missing on the next start, but it does not move existing ones to match a
+# lockfile that changed underneath it, so without this the plugins stay where
+# they were and the lock is a record of nothing.
+
+# lazy-lock hash: {{ include "dot_config/nvim/lazy-lock.json" | sha256sum }}
+set -eu
+
+if ! command -v nvim >/dev/null 2>&1; then
+  exit 0
+fi
+
+echo "lazy-lock.json changed; restoring plugins to the locked revisions."
+nvim --headless "+Lazy! restore" +qa

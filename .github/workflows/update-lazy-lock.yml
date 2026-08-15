@@ -1,0 +1,87 @@
+name: Update lazy-lock.json
+
+# Plugin versions are decided here rather than on each machine, so that every
+# machine installs the same revisions and a bad update can be reverted from git.
+# Runs on macOS because the point is to verify the configuration on the system
+# it is actually used on; the lockfile itself holds git revisions and is not
+# platform specific.
+
+on:
+  schedule:
+    - cron: "0 3 * * 1" # Mondays, 12:00 JST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: macos-latest
+    timeout-minutes: 30
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Neovim and chezmoi
+        run: brew install neovim chezmoi
+
+      - name: Apply the Neovim configuration
+        # Scripts would run brew bundle, and externals would clone tpm; neither
+        # has anything to do with the plugin set.
+        run: |
+          chezmoi apply --source "$PWD" --destination "$HOME" \
+            --exclude scripts,externals --parent-dirs "$HOME/.config/nvim"
+
+      - name: Update plugins
+        run: nvim --headless "+Lazy! sync" +qa
+
+      - name: Smoke test
+        run: nvim --headless "+luafile .github/scripts/nvim-smoke.lua" +qa
+
+      - name: Copy the lockfile back
+        run: cp "$HOME/.config/nvim/lazy-lock.json" dot_config/nvim/lazy-lock.json
+
+      - name: Open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -eu
+
+          if git diff --quiet dot_config/nvim/lazy-lock.json; then
+            echo "No plugin updates."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          branch=ci/lazy-lock
+          git switch -c "$branch"
+          git add dot_config/nvim/lazy-lock.json
+          git commit -m "Update lazy-lock.json"
+
+          # One long-lived branch: a run that supersedes an unmerged update
+          # should replace it rather than open a second pull request.
+          git push --force origin "$branch"
+
+          if [ -n "$(gh pr list --head "$branch" --state open --json number --jq '.[].number')" ]; then
+            echo "Existing pull request updated."
+            exit 0
+          fi
+
+          cat > /tmp/pr-body.md <<'BODY'
+          Plugin revisions updated by `Lazy! sync`.
+
+          A Lua buffer was opened afterwards and an LSP client attached, so
+          lazy.nvim, mason and lspconfig all still work with these revisions.
+          That check is the only thing standing between this branch and every
+          machine: a broken Neovim config starts silently and exits 0, so
+          nothing else here would notice.
+
+          Applying this updates the lockfile, and the run script then moves the
+          installed plugins onto it.
+          BODY
+
+          gh pr create --base main --head "$branch" \
+            --title "Update lazy-lock.json" --body-file /tmp/pr-body.md

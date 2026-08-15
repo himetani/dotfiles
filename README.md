@@ -125,6 +125,40 @@ makes them the right tool for "not on this machine yet" and the wrong one for a
 decision that should apply everywhere. Note that pinning a package other
 formulae depend on can keep those from installing or running correctly.
 
+## Updating Neovim plugins
+
+Plugin versions are decided in CI, not on each machine. A weekly workflow runs
+`Lazy! sync` on a macOS runner, checks that the result still works, and opens a
+pull request containing only the new `lazy-lock.json`. Merging it is what makes
+an update real, and reverting that commit is what undoes one.
+
+Applying the merged lockfile writes the file; the run script then moves the
+installed plugins onto it, because lazy.nvim installs what is missing on the
+next start but does not move existing plugins to match a lockfile that changed
+underneath it.
+
+```sh
+chezmoi update
+```
+
+Updating plugins locally with `:Lazy update` works but drifts from the lockfile,
+and the next apply restores the file without moving the plugins back. Run
+`:Lazy restore` to return to the locked revisions.
+
+The workflow can also be started by hand from the Actions tab, which is the way
+to pick up an update without waiting for Monday.
+
+### What the check actually checks
+
+The workflow opens a Lua buffer and requires an LSP client to attach. That
+exercises lazy.nvim, mason and lspconfig together.
+
+It is deliberately not a search for error messages. lazy.nvim catches failures
+and reports them through `vim.notify`, which does nothing in a headless session,
+so a config with a Lua syntax error or a plugin whose `opts` throw still starts
+silently and exits 0 with nothing on stderr or in `:messages`. Asserting on a
+working LSP client was verified to fail when the configuration is broken.
+
 ## Verification
 
 ```sh
