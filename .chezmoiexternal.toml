@@ -1,4 +1,39 @@
-[".config/tmux/plugins/tpm"]
-    type = "git-repo"
-    url = "https://github.com/tmux-plugins/tpm.git"
-    refreshPeriod = "168h"
+# tmux plugins, pinned to exact commits.
+#
+# There is no plugin manager here. tpm can only pin by branch or tag, because it
+# installs with `git clone -b <ref>`, which rejects a commit SHA — and tmux-cpu
+# has no tags at all, so under tpm it could never be pinned. Fetching the
+# archives directly pins every plugin to a commit and removes tpm, and the code
+# it ran on every tmux start, from the picture entirely.
+#
+# tmux.conf sources each plugin's *.tmux files itself. To move a plugin, change
+# the commit in its URL; nothing updates on its own.
+
+[".config/tmux/plugins/catppuccin-tmux"]
+    type = "archive"
+    # v2.3.0
+    url = "https://github.com/catppuccin/tmux/archive/d2d25bd3393fe43f19eb4fff6cdd2bdf5578e622.tar.gz"
+    exact = true
+    stripComponents = 1
+
+[".config/tmux/plugins/tmux-cpu"]
+    type = "archive"
+    # No tags have ever been published; this is master as of 2026-08-16.
+    url = "https://github.com/tmux-plugins/tmux-cpu/archive/bcb110d754ab2417de824c464730c412a3eb2769.tar.gz"
+    exact = true
+    stripComponents = 1
+
+[".config/tmux/plugins/tmux-battery"]
+    type = "archive"
+    # v2.0.0
+    url = "https://github.com/tmux-plugins/tmux-battery/archive/43832651ede43f54dcf0588727c1957fe648d57d.tar.gz"
+    exact = true
+    stripComponents = 1
+
+[".config/tmux/plugins/tmux-logging"]
+    type = "archive"
+    # v2.1.0. The tag is annotated, so this is the commit it points at rather
+    # than the tag object.
+    url = "https://github.com/tmux-plugins/tmux-logging/archive/741b5d66027066044595b28bb95c5eb69dcfab45.tar.gz"
+    exact = true
+    stripComponents = 1
