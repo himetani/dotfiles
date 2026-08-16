@@ -68,9 +68,23 @@ chezmoi re-add ~/.zshrc
 chezmoi diff
 ```
 
-To add or remove a package, edit `Brewfile`. To change tmux plugins, edit the
-`@plugin` lines in `dot_config/tmux/tmux.conf`. The corresponding run scripts are
-re-executed only when their input files change.
+To add or remove a package, edit `Brewfile`. The corresponding run script is
+re-executed only when its input file changes.
+
+To change a tmux plugin, edit its commit in `.chezmoiexternal.toml` and add or
+remove the matching `run` line at the end of `dot_config/tmux/tmux.conf`. There
+is no plugin manager: tpm could only pin by branch or tag, because it installs
+with `git clone -b <ref>`, and `tmux-cpu` publishes no tags at all. Fetching the
+archives directly pins every plugin to a commit and removes tpm, and the code it
+ran on every tmux start, from the picture. Nothing updates on its own.
+
+A broken `tmux.conf` is not obvious until the next new session, so start a
+server against it before committing:
+
+```sh
+tmux -L check -f ~/.config/tmux/tmux.conf new-session -d && \
+  tmux -L check display-message -p "#{E:status-right}"; tmux -L check kill-server
+```
 
 ## Keeping Homebrew current
 
