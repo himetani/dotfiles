@@ -54,6 +54,10 @@ brew "docker-buildx"
 # Static site generator
 brew "hugo"
 
+# AWS credentials
+tap "sorah/sorah"
+brew "mairu"
+
 cask "1password-cli"
 cask "font-jetbrains-mono-nerd-font"
 cask "font-noto-sans-cjk"
