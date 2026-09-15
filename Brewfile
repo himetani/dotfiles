@@ -54,7 +54,8 @@ brew "docker-buildx"
 # Static site generator
 brew "hugo"
 
-# AWS credentials
+# AWS
+brew "awscli"
 tap "sorah/sorah"
 brew "mairu"
 
